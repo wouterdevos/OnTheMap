@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </mutableArray>
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UdacityLogo" translatesAutoresizingMaskIntoConstraints="NO" id="5J5-gM-4nu">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="knq-ua-8Ln"/>
+                                    <constraint firstAttribute="height" constant="150" id="wP5-a7-EEb"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="knq-ua-8Ln"/>
+                                        <exclude reference="wP5-a7-EEb"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="knq-ua-8Ln"/>
+                                        <include reference="wP5-a7-EEb"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4zH-ZU-ZXr">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97E-M5-f5d" customClass="UILoginTextField" customModule="OnTheMap" customModuleProvider="target">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <color key="backgroundColor" red="0.98671368461243059" green="1" blue="0.990408317578924" alpha="0.47999999999999998" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4lt-ah-CjG"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4lt-ah-CjG"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="4lt-ah-CjG"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rlM-ZW-cus" customClass="UILoginTextField" customModule="OnTheMap" customModuleProvider="target">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <color key="backgroundColor" red="0.98671368459999997" green="1" blue="0.99040831760000003" alpha="0.47999999999999998" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="few-pG-K3C"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="few-pG-K3C"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="few-pG-K3C"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ar6-MS-FPs">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.95686274509803915" green="0.33333333333333331" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7iQ-wI-LD7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                <state key="normal" title="Login"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7iQ-wI-LD7"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="7iQ-wI-LD7"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="loginButtonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pXN-ah-xNc"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTL-Le-B1i">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="22"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.43529411764705883" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="4zH-ZU-ZXr" firstAttribute="top" secondItem="5J5-gM-4nu" secondAttribute="bottom" constant="17" id="5pB-pT-CXD">
+                                <variation key="widthClass=compact" constant="17"/>
+                            </constraint>
+                            <constraint firstAttribute="leadingMargin" secondItem="97E-M5-f5d" secondAttribute="leading" id="Lk4-Te-umd"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="ar6-MS-FPs" secondAttribute="leading" id="RkS-sG-VEV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="97E-M5-f5d" secondAttribute="trailing" id="T6F-ip-e1S"/>
+                            <constraint firstItem="ar6-MS-FPs" firstAttribute="top" secondItem="rlM-ZW-cus" secondAttribute="bottom" constant="19" id="Trq-fl-0Ix">
+                                <variation key="widthClass=compact" constant="21"/>
+                            </constraint>
+                            <constraint firstAttribute="leadingMargin" secondItem="rlM-ZW-cus" secondAttribute="leading" id="WY1-IE-BW2"/>
+                            <constraint firstItem="5J5-gM-4nu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="57" id="Wma-Le-YOV">
+                                <variation key="widthClass=compact" constant="31"/>
+                            </constraint>
+                            <constraint firstItem="97E-M5-f5d" firstAttribute="top" secondItem="4zH-ZU-ZXr" secondAttribute="bottom" constant="10" id="Wpt-j9-WZ7">
+                                <variation key="widthClass=compact" constant="21"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="rlM-ZW-cus" secondAttribute="trailing" id="Yxz-pF-oIq"/>
+                            <constraint firstItem="ZTL-Le-B1i" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bbh-UU-HYZ"/>
+                            <constraint firstItem="5J5-gM-4nu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jaE-UA-ANR">
+                                <variation key="widthClass=compact" constant="11"/>
+                            </constraint>
+                            <constraint firstItem="ZTL-Le-B1i" firstAttribute="top" secondItem="ar6-MS-FPs" secondAttribute="bottom" constant="22" id="sTc-t8-BYm"/>
+                            <constraint firstItem="rlM-ZW-cus" firstAttribute="top" secondItem="97E-M5-f5d" secondAttribute="bottom" constant="19" id="uiu-aR-Xtc">
+                                <variation key="widthClass=compact" constant="21"/>
+                            </constraint>
+                            <constraint firstItem="4zH-ZU-ZXr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zBw-qy-2hn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ar6-MS-FPs" secondAttribute="trailing" id="zmk-x7-9de"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="5J5-gM-4nu"/>
+                                <exclude reference="4zH-ZU-ZXr"/>
+                                <exclude reference="97E-M5-f5d"/>
+                                <exclude reference="rlM-ZW-cus"/>
+                                <exclude reference="ar6-MS-FPs"/>
+                                <exclude reference="ZTL-Le-B1i"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Wma-Le-YOV"/>
+                                <exclude reference="jaE-UA-ANR"/>
+                                <exclude reference="5pB-pT-CXD"/>
+                                <exclude reference="zBw-qy-2hn"/>
+                                <exclude reference="Lk4-Te-umd"/>
+                                <exclude reference="T6F-ip-e1S"/>
+                                <exclude reference="Wpt-j9-WZ7"/>
+                                <exclude reference="WY1-IE-BW2"/>
+                                <exclude reference="Yxz-pF-oIq"/>
+                                <exclude reference="uiu-aR-Xtc"/>
+                                <exclude reference="RkS-sG-VEV"/>
+                                <exclude reference="Trq-fl-0Ix"/>
+                                <exclude reference="zmk-x7-9de"/>
+                                <exclude reference="bbh-UU-HYZ"/>
+                                <exclude reference="sTc-t8-BYm"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="5J5-gM-4nu"/>
+                                <include reference="4zH-ZU-ZXr"/>
+                                <include reference="97E-M5-f5d"/>
+                                <include reference="rlM-ZW-cus"/>
+                                <include reference="ar6-MS-FPs"/>
+                                <include reference="ZTL-Le-B1i"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Wma-Le-YOV"/>
+                                <include reference="jaE-UA-ANR"/>
+                                <include reference="5pB-pT-CXD"/>
+                                <include reference="zBw-qy-2hn"/>
+                                <include reference="Lk4-Te-umd"/>
+                                <include reference="T6F-ip-e1S"/>
+                                <include reference="Wpt-j9-WZ7"/>
+                                <include reference="WY1-IE-BW2"/>
+                                <include reference="Yxz-pF-oIq"/>
+                                <include reference="uiu-aR-Xtc"/>
+                                <include reference="RkS-sG-VEV"/>
+                                <include reference="Trq-fl-0Ix"/>
+                                <include reference="zmk-x7-9de"/>
+                                <include reference="bbh-UU-HYZ"/>
+                                <include reference="sTc-t8-BYm"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextView" destination="97E-M5-f5d" id="hEg-pi-LhK"/>
+                        <outlet property="passwordTextField" destination="rlM-ZW-cus" id="hkk-b3-wUL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="573" y="479"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="UdacityLogo" width="256" height="256"/>
+    </resources>
+</document>
