@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OnTheMap/RESTClient.swift"
-            timestampString = "471739547.634813"
+            filePath = "OnTheMap/OnTheMapClient.swift"
+            timestampString = "472172113.892433"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "parseJSONWithCompletionHandler(_:completionHandler:)"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "createSession(_:password:completionHandler:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

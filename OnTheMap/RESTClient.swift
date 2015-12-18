@@ -12,26 +12,25 @@ class RESTClient: NSObject {
 
     var session : NSURLSession
     
-    var sessionID : String?
-    var userID : String?
-    
     override init() {
         session = NSURLSession.sharedSession()
         super.init()
     }
     
-    func taskForGETMethod(var urlString: String, queryParameters: [String:AnyObject]?, completionHandler: (result: AnyObject!, error: NSError?)-> Void) -> NSURLSessionDataTask {
+    func taskForGETMethod(var urlString: String, queryParameters: [String:AnyObject]?, completionHandler: (data: NSData?, error: NSError?)-> Void) -> NSURLSessionDataTask {
         
         // Build the URL and configure the request
         urlString += RESTClient.escapedParameters(queryParameters)
         let url = NSURL(string: urlString)!
+        
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = RESTClient.HTTPMethods.GET
         
+        // Make the request
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             
-            if self.isSuccess(data, response: response, error: error) {
-                RESTClient.parseJSONWithCompletionHandler(data!, completionHandler: completionHandler)
+            if self.isSuccess(data, response: response, error: error, completionHandler: completionHandler) {
+                completionHandler(data: data, error: nil)
             }
         }
         
@@ -40,19 +39,25 @@ class RESTClient: NSObject {
         return task
     }
     
-    func taskForPOSTMethod(urlString: String, bodyParameters: [String:AnyObject], completionHandler: (result: AnyObject!, error: NSError?)-> Void) -> NSURLSessionDataTask {
+    func taskForPOSTMethod(urlString: String, headerFields: [String:String], bodyParameters: [String:AnyObject], completionHandler: (data: NSData?, error: NSError?)-> Void) -> NSURLSessionDataTask {
         
         // Build the URL and configure the request
         let url = NSURL(string: urlString)!
+        
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = RESTClient.HTTPMethods.POST
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        for (field, value) in headerFields {
+            request.addValue(value, forHTTPHeaderField: field)
+        }
+        do {
+            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(bodyParameters, options: .PrettyPrinted)
+        }
         
+        // Make the request
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             
-            if self.isSuccess(data, response: response, error: error) {
-                RESTClient.parseJSONWithCompletionHandler(data!, completionHandler: completionHandler)
+            if self.isSuccess(data, response: response, error: error, completionHandler: completionHandler) {
+                completionHandler(data: data, error: nil)
             }
         }
         
@@ -61,55 +66,106 @@ class RESTClient: NSObject {
         return task
     }
     
-    func taskForPUTMethod(scheme: String, host: String, path: String, completionHandler: (result: AnyObject!, error: NSError?)-> Void) -> NSURLSessionDataTask {
+    func taskForPUTMethod(urlString: String, headerFields: [String:String], completionHandler: (data: NSData?, error: NSError?)-> Void) -> NSURLSessionDataTask {
         
-        return NSURLSessionDataTask()
+        // Build the URL and configure the request
+        let url = NSURL(string: urlString)!
+        
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = RESTClient.HTTPMethods.PUT
+        for (field, value) in headerFields {
+            request.addValue(value, forHTTPHeaderField: field)
+        }
+        
+        // Make the request
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            
+            if self.isSuccess(data, response: response, error: error, completionHandler: completionHandler) {
+                completionHandler(data: data, error: nil)
+            }
+        }
+        
+        task.resume()
+        
+        return task
     }
     
-    func taskForDELETEMethod(scheme: String, host: String, path: String, completionHandler: (result: AnyObject!, error: NSError?)-> Void) -> NSURLSessionDataTask {
+    func taskForDELETEMethod(urlString: String, headerFields: [String:String], completionHandler: (data: NSData?, error: NSError?)-> Void) -> NSURLSessionDataTask {
         
-        return NSURLSessionDataTask()
+        // Build the URL and configure the request
+        let url = NSURL(string: urlString)!
+        
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = RESTClient.HTTPMethods.DELETE
+        for (value, field) in headerFields {
+            request.addValue(value, forHTTPHeaderField: field)
+        }
+        
+        // Make the request
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            
+            if self.isSuccess(data, response: response, error: error, completionHandler: completionHandler) {
+                completionHandler(data: data, error: nil)
+            }
+        }
+        
+        task.resume()
+        
+        return task
     }
     
-    func isSuccess(data: NSData?, response: NSURLResponse?, error: NSError?) -> Bool {
+    func isSuccess(data: NSData?, response: NSURLResponse?, error: NSError?, completionHandler: (data: NSData?, error: NSError?) -> Void) -> Bool {
         
         guard error == nil else {
             print("There was an error with your request: \(error)")
+            completionHandler(data: nil, error: error)
             return false
         }
         
         guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+            var errorMessage : String
             if let response = response as? NSHTTPURLResponse {
-                print("Your request returned an invalid response! Status code \(response.statusCode)!")
+                errorMessage = "Your request returned an invalid response! Status code \(response.statusCode)!"
             } else if let response = response {
-                print("Your request returned an invalid response! Response \(response)!")
+                errorMessage = "Your request returned an invalid response! Response \(response)!"
             } else {
-                print("Your request returned an invalid response!")
+                errorMessage = "Your request returned an invalid response!"
             }
             
+            print(errorMessage)
+            let userInfo = [NSLocalizedDescriptionKey : errorMessage]
+            completionHandler(data: nil, error: NSError(domain: "isSuccess", code: 1, userInfo: userInfo))
             return false
         }
         
         guard let _ = data else {
-            print("No data was returned by the request!")
+            let errorMessage = "No data was returned by the request!"
+            print(errorMessage)
+            let userInfo = [NSLocalizedDescriptionKey : errorMessage]
+            completionHandler(data: nil, error: NSError(domain: "isSuccess", code: 1, userInfo: userInfo))
             return false
         }
         
         return true
     }
     
+    /* Helper: Skip the first 5 characters of the response data */
+    class func skipResponseCharacters(data: NSData) -> NSData {
+        let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
+        return newData
+    }
+    
     /* Helper: Given raw JSON, return a usable Foundation object */
-    class func parseJSONWithCompletionHandler(data: NSData, completionHandler: (result: AnyObject!, error: NSError?) -> Void) {
+    class func parseJSONWithCompletionHandler(data: NSData) -> AnyObject? {
         
-        var parsedResult: AnyObject!
+        var parsedResult: AnyObject?
         do {
             parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
         } catch {
-            let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
-            completionHandler(result: nil, error: NSError(domain: "parseJSONWithCompletionHandler", code: 1, userInfo: userInfo))
+            parsedResult = nil
         }
         
-        completionHandler(result: parsedResult, error: nil)
+        return parsedResult
     }
     
     /* Helper function: Given a dictionary of parameters, convert to a string for a url */
@@ -135,5 +191,14 @@ class RESTClient: NSObject {
         }
         
         return (!urlVars.isEmpty ? "?" : "") + urlVars.joinWithSeparator("&")
+    }
+    
+    class func sharedInstance() -> RESTClient {
+        
+        struct Singleton {
+            static var sharedInstance = RESTClient()
+        }
+        
+        return Singleton.sharedInstance
     }
 }

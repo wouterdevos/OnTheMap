@@ -16,7 +16,9 @@
 		100D00241C1C61E700047045 /* OnTheMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100D00231C1C61E700047045 /* OnTheMapTests.swift */; };
 		100D002F1C1C61E700047045 /* OnTheMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100D002E1C1C61E700047045 /* OnTheMapUITests.swift */; };
 		100D00411C1C880C00047045 /* UILoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100D00401C1C880C00047045 /* UILoginTextField.swift */; };
+		106D26B11C24AA5A0005F60A /* OnTheMapConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D26B01C24AA5A0005F60A /* OnTheMapConstants.swift */; };
 		10E695CC1C1E07F4009B00BD /* RESTClientConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E695CB1C1E07F4009B00BD /* RESTClientConstants.swift */; };
+		10F240251C22E54700B52D41 /* OnTheMapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F240241C22E54700B52D41 /* OnTheMapClient.swift */; };
 		10F4E7861C1D782200769DCB /* RESTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F4E7851C1D782200769DCB /* RESTClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +58,9 @@
 		100D003E1C1C697300047045 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		100D003F1C1C697300047045 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		100D00401C1C880C00047045 /* UILoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILoginTextField.swift; sourceTree = "<group>"; };
+		106D26B01C24AA5A0005F60A /* OnTheMapConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapConstants.swift; sourceTree = "<group>"; };
 		10E695CB1C1E07F4009B00BD /* RESTClientConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTClientConstants.swift; sourceTree = "<group>"; };
+		10F240241C22E54700B52D41 /* OnTheMapClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapClient.swift; sourceTree = "<group>"; };
 		10F4E7851C1D782200769DCB /* RESTClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +113,8 @@
 				100D00401C1C880C00047045 /* UILoginTextField.swift */,
 				10F4E7851C1D782200769DCB /* RESTClient.swift */,
 				10E695CB1C1E07F4009B00BD /* RESTClientConstants.swift */,
+				10F240241C22E54700B52D41 /* OnTheMapClient.swift */,
+				106D26B01C24AA5A0005F60A /* OnTheMapConstants.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -285,7 +291,9 @@
 				100D00141C1C61E700047045 /* OnTheMap.xcdatamodeld in Sources */,
 				100D00411C1C880C00047045 /* UILoginTextField.swift in Sources */,
 				10E695CC1C1E07F4009B00BD /* RESTClientConstants.swift in Sources */,
+				106D26B11C24AA5A0005F60A /* OnTheMapConstants.swift in Sources */,
 				100D000E1C1C61E700047045 /* LoginViewController.swift in Sources */,
+				10F240251C22E54700B52D41 /* OnTheMapClient.swift in Sources */,
 				10F4E7861C1D782200769DCB /* RESTClient.swift in Sources */,
 				100D000C1C1C61E700047045 /* AppDelegate.swift in Sources */,
 			);

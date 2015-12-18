@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -131,6 +132,9 @@
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="40" y="479" width="320" height="26"/>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.43529411764705883" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -173,10 +177,6 @@
                                 <exclude reference="ZTL-Le-B1i"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Wma-Le-YOV"/>
-                                <exclude reference="jaE-UA-ANR"/>
-                                <exclude reference="5pB-pT-CXD"/>
-                                <exclude reference="zBw-qy-2hn"/>
                                 <exclude reference="Lk4-Te-umd"/>
                                 <exclude reference="T6F-ip-e1S"/>
                                 <exclude reference="Wpt-j9-WZ7"/>
@@ -186,8 +186,12 @@
                                 <exclude reference="RkS-sG-VEV"/>
                                 <exclude reference="Trq-fl-0Ix"/>
                                 <exclude reference="zmk-x7-9de"/>
+                                <exclude reference="5pB-pT-CXD"/>
+                                <exclude reference="zBw-qy-2hn"/>
                                 <exclude reference="bbh-UU-HYZ"/>
                                 <exclude reference="sTc-t8-BYm"/>
+                                <exclude reference="Wma-Le-YOV"/>
+                                <exclude reference="jaE-UA-ANR"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -200,10 +204,6 @@
                                 <include reference="ZTL-Le-B1i"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Wma-Le-YOV"/>
-                                <include reference="jaE-UA-ANR"/>
-                                <include reference="5pB-pT-CXD"/>
-                                <include reference="zBw-qy-2hn"/>
                                 <include reference="Lk4-Te-umd"/>
                                 <include reference="T6F-ip-e1S"/>
                                 <include reference="Wpt-j9-WZ7"/>
@@ -213,8 +213,12 @@
                                 <include reference="RkS-sG-VEV"/>
                                 <include reference="Trq-fl-0Ix"/>
                                 <include reference="zmk-x7-9de"/>
+                                <include reference="5pB-pT-CXD"/>
+                                <include reference="zBw-qy-2hn"/>
                                 <include reference="bbh-UU-HYZ"/>
                                 <include reference="sTc-t8-BYm"/>
+                                <include reference="Wma-Le-YOV"/>
+                                <include reference="jaE-UA-ANR"/>
                             </mask>
                         </variation>
                     </view>

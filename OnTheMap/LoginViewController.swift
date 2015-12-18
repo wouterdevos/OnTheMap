@@ -37,7 +37,24 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginButtonTouchUp(sender: AnyObject) {
+        guard let username = emailTextView.text else {
+            // Display error message
+            return
+        }
         
+        guard let password = passwordTextField.text else {
+            // Display error message
+            return
+        }
+        
+        OnTheMapClient.sharedInstance().createSession(username, password: password) { (success, errorString) in
+            if success {
+                // Go to next screen
+                print("Successfully logged in")
+            } else {
+                print(errorString!)
+            }
+        }
     }
 
     
