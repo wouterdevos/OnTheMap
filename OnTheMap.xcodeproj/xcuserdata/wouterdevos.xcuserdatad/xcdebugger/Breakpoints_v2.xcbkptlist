@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OnTheMap/OnTheMapClient.swift"
-            timestampString = "472172113.892433"
+            filePath = "OnTheMap/LoginViewController.swift"
+            timestampString = "472253528.322112"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "createSession(_:password:completionHandler:)"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "loginButtonTouchUp(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

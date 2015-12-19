@@ -122,6 +122,14 @@ class RESTClient: NSObject {
             return false
         }
         
+        guard let data = data else {
+            let errorMessage = "No data was returned by the request!"
+            print(errorMessage)
+            let userInfo = [NSLocalizedDescriptionKey : errorMessage]
+            completionHandler(data: nil, error: NSError(domain: "isSuccess", code: 1, userInfo: userInfo))
+            return false
+        }
+        
         guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
             var errorMessage : String
             if let response = response as? NSHTTPURLResponse {
@@ -134,15 +142,7 @@ class RESTClient: NSObject {
             
             print(errorMessage)
             let userInfo = [NSLocalizedDescriptionKey : errorMessage]
-            completionHandler(data: nil, error: NSError(domain: "isSuccess", code: 1, userInfo: userInfo))
-            return false
-        }
-        
-        guard let _ = data else {
-            let errorMessage = "No data was returned by the request!"
-            print(errorMessage)
-            let userInfo = [NSLocalizedDescriptionKey : errorMessage]
-            completionHandler(data: nil, error: NSError(domain: "isSuccess", code: 1, userInfo: userInfo))
+            completionHandler(data: data, error: NSError(domain: "isSuccess", code: 1, userInfo: userInfo))
             return false
         }
         

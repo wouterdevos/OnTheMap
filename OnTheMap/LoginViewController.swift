@@ -14,10 +14,14 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextView: UILoginTextField!
     @IBOutlet weak var passwordTextField: UILoginTextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var progressIndicatorView: UIActivityIndicatorView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        progressIndicatorView.hidesWhenStopped = true
+        progressIndicatorView.stopAnimating()
         
         // Create the top and bottom colors
         let topColor = UIColor(red: 255/255, green: 153/255, blue: 10/255, alpha: 1)
@@ -47,16 +51,36 @@ class LoginViewController: UIViewController {
             return
         }
         
+        toggleUserInterface(false)
         OnTheMapClient.sharedInstance().createSession(username, password: password) { (success, errorString) in
-            if success {
-                // Go to next screen
-                print("Successfully logged in")
-            } else {
-                print(errorString!)
-            }
+            dispatch_async(dispatch_get_main_queue(), {
+                self.toggleUserInterface(true)
+                if success {
+                    // Go to next screen
+                    print("Successfully logged in")
+                } else {
+                    print(errorString!)
+                    self.createAlertController(errorString!)
+                }
+            })
         }
     }
 
+    func toggleUserInterface(enabled: Bool) {
+        emailTextView.enabled = enabled
+        passwordTextField.enabled = enabled
+        loginButton.enabled = enabled
+        if enabled {
+            progressIndicatorView.stopAnimating()
+        } else {
+            progressIndicatorView.startAnimating()
+        }
+    }
     
+    func createAlertController(message: String) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        presentViewController(alertController, animated: true, completion: nil)
+    }
 }
 

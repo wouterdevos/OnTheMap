@@ -74,6 +74,8 @@ extension OnTheMapClient {
         static let ID = "id"
         static let Expiration = "expiration"
         static let CurrentSecondsSinceEpoch = "current_seconds_since_epoch"
+        static let Status = "status"
+        static let Error = "error"
         
         // MARK: Parse student locations
         static let Results = "results"

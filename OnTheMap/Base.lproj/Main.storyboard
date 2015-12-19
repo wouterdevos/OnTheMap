@@ -136,6 +136,9 @@
                                     <rect key="frame" x="40" y="479" width="320" height="26"/>
                                 </variation>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="dbr-i4-zBE">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.43529411764705883" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -143,6 +146,7 @@
                                 <variation key="widthClass=compact" constant="17"/>
                             </constraint>
                             <constraint firstAttribute="leadingMargin" secondItem="97E-M5-f5d" secondAttribute="leading" id="Lk4-Te-umd"/>
+                            <constraint firstItem="dbr-i4-zBE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QD2-ay-MZW"/>
                             <constraint firstAttribute="leadingMargin" secondItem="ar6-MS-FPs" secondAttribute="leading" id="RkS-sG-VEV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="97E-M5-f5d" secondAttribute="trailing" id="T6F-ip-e1S"/>
                             <constraint firstItem="ar6-MS-FPs" firstAttribute="top" secondItem="rlM-ZW-cus" secondAttribute="bottom" constant="19" id="Trq-fl-0Ix">
@@ -157,6 +161,7 @@
                             </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="rlM-ZW-cus" secondAttribute="trailing" id="Yxz-pF-oIq"/>
                             <constraint firstItem="ZTL-Le-B1i" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bbh-UU-HYZ"/>
+                            <constraint firstItem="dbr-i4-zBE" firstAttribute="top" secondItem="ZTL-Le-B1i" secondAttribute="bottom" constant="26" id="iRU-gV-KAc"/>
                             <constraint firstItem="5J5-gM-4nu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jaE-UA-ANR">
                                 <variation key="widthClass=compact" constant="11"/>
                             </constraint>
@@ -175,8 +180,13 @@
                                 <exclude reference="rlM-ZW-cus"/>
                                 <exclude reference="ar6-MS-FPs"/>
                                 <exclude reference="ZTL-Le-B1i"/>
+                                <exclude reference="dbr-i4-zBE"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Wma-Le-YOV"/>
+                                <exclude reference="jaE-UA-ANR"/>
+                                <exclude reference="5pB-pT-CXD"/>
+                                <exclude reference="zBw-qy-2hn"/>
                                 <exclude reference="Lk4-Te-umd"/>
                                 <exclude reference="T6F-ip-e1S"/>
                                 <exclude reference="Wpt-j9-WZ7"/>
@@ -186,12 +196,10 @@
                                 <exclude reference="RkS-sG-VEV"/>
                                 <exclude reference="Trq-fl-0Ix"/>
                                 <exclude reference="zmk-x7-9de"/>
-                                <exclude reference="5pB-pT-CXD"/>
-                                <exclude reference="zBw-qy-2hn"/>
                                 <exclude reference="bbh-UU-HYZ"/>
                                 <exclude reference="sTc-t8-BYm"/>
-                                <exclude reference="Wma-Le-YOV"/>
-                                <exclude reference="jaE-UA-ANR"/>
+                                <exclude reference="QD2-ay-MZW"/>
+                                <exclude reference="iRU-gV-KAc"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -202,8 +210,13 @@
                                 <include reference="rlM-ZW-cus"/>
                                 <include reference="ar6-MS-FPs"/>
                                 <include reference="ZTL-Le-B1i"/>
+                                <include reference="dbr-i4-zBE"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Wma-Le-YOV"/>
+                                <include reference="jaE-UA-ANR"/>
+                                <include reference="5pB-pT-CXD"/>
+                                <include reference="zBw-qy-2hn"/>
                                 <include reference="Lk4-Te-umd"/>
                                 <include reference="T6F-ip-e1S"/>
                                 <include reference="Wpt-j9-WZ7"/>
@@ -213,23 +226,23 @@
                                 <include reference="RkS-sG-VEV"/>
                                 <include reference="Trq-fl-0Ix"/>
                                 <include reference="zmk-x7-9de"/>
-                                <include reference="5pB-pT-CXD"/>
-                                <include reference="zBw-qy-2hn"/>
                                 <include reference="bbh-UU-HYZ"/>
                                 <include reference="sTc-t8-BYm"/>
-                                <include reference="Wma-Le-YOV"/>
-                                <include reference="jaE-UA-ANR"/>
+                                <include reference="QD2-ay-MZW"/>
+                                <include reference="iRU-gV-KAc"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="emailTextView" destination="97E-M5-f5d" id="hEg-pi-LhK"/>
+                        <outlet property="loginButton" destination="ar6-MS-FPs" id="zDQ-ob-Fkm"/>
                         <outlet property="passwordTextField" destination="rlM-ZW-cus" id="hkk-b3-wUL"/>
+                        <outlet property="progressIndicatorView" destination="dbr-i4-zBE" id="T1A-N8-uMP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="573" y="479"/>
+            <point key="canvasLocation" x="514.5" y="535"/>
         </scene>
     </scenes>
     <resources>

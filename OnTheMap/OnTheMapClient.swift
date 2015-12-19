@@ -31,29 +31,45 @@ class OnTheMapClient : NSObject {
         restClient.taskForPOSTMethod(urlString, headerFields: headerFields, bodyParameters: bodyParameters) { (data, error) in
             
             if let error = error {
-                print(error)
-                completionHandler(success: false, errorString: "Incorrect username or password!")
+                self.handleCreateSessionResponseError(data, error: error, completionHandler: completionHandler)
             } else {
-                let skipData = RESTClient.skipResponseCharacters(data!)
-                guard let JSONResult = RESTClient.parseJSONWithCompletionHandler(skipData) else {
-                    completionHandler(success: false, errorString: "Cannot parse data as JSON!")
-                    return
-                }
-                
-                guard let session = JSONResult[OnTheMapClient.JSONResponseKeys.Session] as? [String:AnyObject] else {
-                    completionHandler(success: false, errorString: "Cannot find key 'session' in JSON")
-                    return
-                }
-                
-                guard let sessionID = session[OnTheMapClient.JSONResponseKeys.ID] as? String else {
-                    completionHandler(success: false, errorString: "Cannot find key 'id' in JSON")
-                    return
-                }
-                
-                self.sessionID = sessionID
-                completionHandler(success: true, errorString: nil)
+                self.handleCreateSessionResponse(data, completionHandler: completionHandler)
             }
         }
+    }
+    
+    func handleCreateSessionResponse(data: NSData?, completionHandler: (success: Bool, errorString: String?) -> Void) {
+        let skipData = RESTClient.skipResponseCharacters(data!)
+        guard let JSONResult = RESTClient.parseJSONWithCompletionHandler(skipData) else {
+            completionHandler(success: false, errorString: "Cannot parse data as JSON!")
+            return
+        }
+        
+        guard let session = JSONResult[OnTheMapClient.JSONResponseKeys.Session] as? [String:AnyObject] else {
+            completionHandler(success: false, errorString: "Cannot find key 'session' in JSON")
+            return
+        }
+        
+        guard let sessionID = session[OnTheMapClient.JSONResponseKeys.ID] as? String else {
+            completionHandler(success: false, errorString: "Cannot find key 'id' in JSON")
+            return
+        }
+        
+        self.sessionID = sessionID
+        completionHandler(success: true, errorString: nil)
+    }
+    
+    func handleCreateSessionResponseError(data: NSData?, error: NSError, completionHandler: (success: Bool, errorString: String?) -> Void) {
+        var errorString = error.localizedDescription
+        if data != nil {
+            let skipData = RESTClient.skipResponseCharacters(data!)
+            let JSONResult = RESTClient.parseJSONWithCompletionHandler(skipData)!
+            if let errorMessage = JSONResult[OnTheMapClient.JSONResponseKeys.Error] as? String {
+                errorString = errorMessage
+            }
+        }
+        print(errorString)
+        completionHandler(success: false, errorString: errorString)
     }
     
     func getHeaderFields() -> [String:String] {
