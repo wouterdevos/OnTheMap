@@ -66,6 +66,10 @@ class LoginViewController: UIViewController {
         }
     }
 
+    @IBAction func signUpButtonTouchUp(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "https://www.udacity.com/account/auth#!/signup")!)
+    }
+    
     func toggleUserInterface(enabled: Bool) {
         emailTextView.enabled = enabled
         passwordTextField.enabled = enabled
