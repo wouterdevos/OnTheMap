@@ -25,4 +25,18 @@ class BaseViewController: UIViewController {
     func addPin() {
         
     }
+    
+    func getStudentLocations() {
+        OnTheMapClient.sharedInstance().getStudentLocations() { (success, errorString) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if success {
+                    self.updateStudentLocations()
+                }
+            })
+        }
+    }
+    
+    func updateStudentLocations() {
+        // Implement method in child class
+    }
 }

@@ -16,40 +16,34 @@ class PinListTableViewController: BaseViewController, UITableViewDataSource, UIT
     }
     
     @IBAction func logoutTouchUp(sender: AnyObject) {
+        logout()
     }
     
     @IBAction func addPinTouchUp(sender: AnyObject) {
     }
     
     @IBAction func refreshListTouchUp(sender: AnyObject) {
+        getStudentLocations()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0//self.allVillains.count
+        return OnTheMapClient.sharedInstance().studentLocations.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-//        let cell = tableView.dequeueReusableCellWithIdentifier("VillainCell") as! UITableViewCell
-//        let villain = self.allVillains[indexPath.row]
-//        
-//        // Set the name and image
-//        cell.textLabel?.text = villain.name
-//        cell.imageView?.image = UIImage(named: villain.imageName)
-//        
-//        // If the cell has a detail label, we will put the evil scheme in.
-//        if let detailTextLabel = cell.detailTextLabel {
-//            detailTextLabel.text = "Scheme: \(villain.evilScheme)"
-//        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("StudentLocationTableViewCell", forIndexPath: indexPath)
+        let studentLocation = OnTheMapClient.sharedInstance().studentLocations[indexPath.row]
         
-        return UITableViewCell()
+        // Set the name
+        cell.textLabel?.text = "\(studentLocation.firstName) \(studentLocation.lastName)"
+        
+        return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-//        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("VillainDetailViewController") as! VillainDetailViewController
-//        detailController.villain = self.allVillains[indexPath.row]
-//        self.navigationController!.pushViewController(detailController, animated: true)
-        
+        let studentLocation = OnTheMapClient.sharedInstance().studentLocations[indexPath.row]
+        UIApplication.sharedApplication().openURL(NSURL(string: studentLocation.mediaURL)!)
     }
 }

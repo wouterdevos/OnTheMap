@@ -12,7 +12,7 @@ class OnTheMapClient : NSObject {
     
     var sessionID : String?
     var userID : String?
-    var studentLocations : [StudentLocation]?
+    var studentLocations = [StudentLocation]()
     
     // MARK: Create Session
     
@@ -106,6 +106,38 @@ class OnTheMapClient : NSObject {
         }
     }
     
+    // MARK: Get Student Locations
+    
+    func getStudentLocations(completionHandler: (success: Bool, errorString: String?) -> Void) {
+        
+        // Specify header fields.
+        let headerFields = getParseHeaderFields()
+        
+        // Create url.
+        let urlString = OnTheMapClient.Constants.ParseURL + OnTheMapClient.Methods.StudentLocation
+        
+        let restClient = RESTClient.sharedInstance()
+        restClient.taskForGETMethod(urlString, headerFields: headerFields, queryParameters: nil) { (data, error) in
+            
+            if let _ = error {
+                completionHandler(success: false, errorString: "Failed to retrieve student locations")
+            } else {
+                guard let JSONResult = RESTClient.parseJSONWithCompletionHandler(data!) else {
+                    completionHandler(success: false, errorString: "Cannot parse data as JSON!")
+                    return
+                }
+                
+                guard let results = JSONResult[OnTheMapClient.JSONResponseKeys.Results] as? [[String:AnyObject]] else {
+                    completionHandler(success: false, errorString: "Cannot find key 'results' in JSON")
+                    return
+                }
+                self.studentLocations = StudentLocation.studentLocationsFromResults(results)
+                completionHandler(success: true, errorString: nil)
+            }
+        }
+    }
+    
+    
     func getHeaderFields() -> [String:String] {
         
         let headerFields = [
@@ -116,8 +148,15 @@ class OnTheMapClient : NSObject {
         return headerFields
     }
     
-//    request.addValue("application/json", forHTTPHeaderField: "Accept")
-//    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    func getParseHeaderFields() -> [String:String] {
+        
+        let parseHeaderFields = [
+            OnTheMapClient.HeaderFields.ParseApplicationID: OnTheMapClient.Constants.ParseAppID,
+            OnTheMapClient.HeaderFields.ParseRESTAPIKey: OnTheMapClient.Constants.ParseRESTAPIKey
+        ]
+        
+        return parseHeaderFields
+    }
     
     class func sharedInstance() -> OnTheMapClient {
         

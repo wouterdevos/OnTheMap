@@ -17,7 +17,7 @@ class RESTClient: NSObject {
         super.init()
     }
     
-    func taskForGETMethod(var urlString: String, queryParameters: [String:AnyObject]?, completionHandler: (data: NSData?, error: NSError?)-> Void) -> NSURLSessionDataTask {
+    func taskForGETMethod(var urlString: String, headerFields: [String:String], queryParameters: [String:AnyObject]?, completionHandler: (data: NSData?, error: NSError?)-> Void) -> NSURLSessionDataTask {
         
         // Build the URL and configure the request
         urlString += RESTClient.escapedParameters(queryParameters)
@@ -25,6 +25,9 @@ class RESTClient: NSObject {
         
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = RESTClient.HTTPMethods.GET
+        for (field, value) in headerFields {
+            request.addValue(value, forHTTPHeaderField: field)
+        }
         
         // Make the request
         let task = session.dataTaskWithRequest(request) { (data, response, error) in

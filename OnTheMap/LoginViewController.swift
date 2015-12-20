@@ -82,11 +82,5 @@ class LoginViewController: UIViewController {
             progressIndicatorView.startAnimating()
         }
     }
-    
-    func createAlertController(message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        presentViewController(alertController, animated: true, completion: nil)
-    }
 }
 

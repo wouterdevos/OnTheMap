@@ -275,12 +275,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Sch-dc-2rh">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentLocationTableViewCell" textLabel="GiR-Di-lIr" imageView="Hhe-om-ww6" style="IBUITableViewCellStyleDefault" id="Sch-dc-2rh">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sch-dc-2rh" id="jgh-ae-eFs">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GiR-Di-lIr">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="PinIcon" id="Hhe-om-ww6">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -377,10 +391,10 @@
                                 <exclude reference="OgW-IA-0m9"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Hku-Yl-4iz"/>
                                 <exclude reference="Yfi-ma-9vR"/>
                                 <exclude reference="b9k-tw-qyr"/>
                                 <exclude reference="kaC-DI-Zwd"/>
-                                <exclude reference="Hku-Yl-4iz"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -388,10 +402,10 @@
                                 <include reference="OgW-IA-0m9"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Hku-Yl-4iz"/>
                                 <include reference="Yfi-ma-9vR"/>
                                 <include reference="b9k-tw-qyr"/>
                                 <include reference="kaC-DI-Zwd"/>
-                                <include reference="Hku-Yl-4iz"/>
                             </mask>
                         </variation>
                     </view>
