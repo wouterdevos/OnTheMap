@@ -12,6 +12,9 @@ class OnTheMapClient : NSObject {
     
     var sessionID : String?
     var userID : String?
+    var studentLocations : [StudentLocation]?
+    
+    // MARK: Create Session
     
     func createSession(username: String, password: String, completionHandler: (success: Bool, errorString: String?) -> Void) {
         
@@ -72,6 +75,37 @@ class OnTheMapClient : NSObject {
         completionHandler(success: false, errorString: errorString)
     }
     
+    // MARK: Delete Session
+    
+    func deleteSession(completionHandler: (success: Bool, errorString: String?) -> Void) {
+        
+        // Specify header fields.
+        var headerFields = [String:String]()
+        var xsrfCookie: NSHTTPCookie? = nil
+        let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == OnTheMapClient.Constants.CookieValue {
+                xsrfCookie = cookie
+            }
+        }
+        if let xsrfCookie = xsrfCookie {
+            headerFields[OnTheMapClient.Constants.CookieField] = xsrfCookie.value
+        }
+        
+        // Create url and specifiy method.
+        let urlString = OnTheMapClient.Constants.UdacityURL + OnTheMapClient.Methods.Session
+        
+        let restClient = RESTClient.sharedInstance()
+        restClient.taskForDELETEMethod(urlString, headerFields: headerFields) { (data, error) in
+            
+            if let _ = error {
+                completionHandler(success: false, errorString: "Failed to logout!")
+            } else {
+                completionHandler(success: true, errorString: nil)
+            }
+        }
+    }
+    
     func getHeaderFields() -> [String:String] {
         
         let headerFields = [
@@ -81,16 +115,6 @@ class OnTheMapClient : NSObject {
         
         return headerFields
     }
-//    var xsrfCookie: NSHTTPCookie? = nil
-//    let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
-//    for cookie in sharedCookieStorage.cookies! {
-//    if cookie.name == RESTClient.Constants.CookieKey {
-//    xsrfCookie = cookie
-//    }
-//    }
-//    if let xsrfCookie = xsrfCookie {
-//        request.addValue(xsrfCookie.value, forHTTPHeaderField: RESTClient.Constants.CookieValue)
-//    }
     
 //    request.addValue("application/json", forHTTPHeaderField: "Accept")
 //    request.addValue("application/json", forHTTPHeaderField: "Content-Type")

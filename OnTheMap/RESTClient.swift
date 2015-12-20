@@ -97,7 +97,7 @@ class RESTClient: NSObject {
         
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = RESTClient.HTTPMethods.DELETE
-        for (value, field) in headerFields {
+        for (field, value) in headerFields {
             request.addValue(value, forHTTPHeaderField: field)
         }
         

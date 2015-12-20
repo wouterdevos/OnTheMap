@@ -58,9 +58,11 @@ class LoginViewController: UIViewController {
                 if success {
                     // Go to next screen
                     print("Successfully logged in")
+                    let tabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarController")
+                    self.presentViewController(tabBarController, animated: true, completion: nil)
                 } else {
                     print(errorString!)
-                    self.createAlertController(errorString!)
+                    Utilities.createAlertController(self, message: errorString!)
                 }
             })
         }

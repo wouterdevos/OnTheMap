@@ -28,8 +28,8 @@ extension OnTheMapClient {
         static let UdacityURL = "https://www.udacity.com/"
         static let ParseURL = "https://api.parse.com/"
         
-        static let CookieKey = "XSRF-TOKEN"
-        static let CookieValue = "X-XSRF-TOKEN"
+        static let CookieValue = "XSRF-TOKEN"
+        static let CookieField = "X-XSRF-TOKEN"
     }
     
     struct Methods {

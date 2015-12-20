@@ -19,6 +19,11 @@
 		106D26B11C24AA5A0005F60A /* OnTheMapConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D26B01C24AA5A0005F60A /* OnTheMapConstants.swift */; };
 		10E695CC1C1E07F4009B00BD /* RESTClientConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E695CB1C1E07F4009B00BD /* RESTClientConstants.swift */; };
 		10F240251C22E54700B52D41 /* OnTheMapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F240241C22E54700B52D41 /* OnTheMapClient.swift */; };
+		10F36DB21C26C9CB005D3B3C /* PinMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F36DB11C26C9CB005D3B3C /* PinMapViewController.swift */; };
+		10F36DB41C26CA61005D3B3C /* PinListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F36DB31C26CA61005D3B3C /* PinListTableViewController.swift */; };
+		10F36DB61C26D6F0005D3B3C /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F36DB51C26D6F0005D3B3C /* StudentLocation.swift */; };
+		10F36DBC1C26F762005D3B3C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F36DBB1C26F762005D3B3C /* Utilities.swift */; };
+		10F36DBE1C26FC25005D3B3C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F36DBD1C26FC25005D3B3C /* BaseViewController.swift */; };
 		10F4E7861C1D782200769DCB /* RESTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F4E7851C1D782200769DCB /* RESTClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +66,11 @@
 		106D26B01C24AA5A0005F60A /* OnTheMapConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapConstants.swift; sourceTree = "<group>"; };
 		10E695CB1C1E07F4009B00BD /* RESTClientConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTClientConstants.swift; sourceTree = "<group>"; };
 		10F240241C22E54700B52D41 /* OnTheMapClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapClient.swift; sourceTree = "<group>"; };
+		10F36DB11C26C9CB005D3B3C /* PinMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinMapViewController.swift; sourceTree = "<group>"; };
+		10F36DB31C26CA61005D3B3C /* PinListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinListTableViewController.swift; sourceTree = "<group>"; };
+		10F36DB51C26D6F0005D3B3C /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
+		10F36DBB1C26F762005D3B3C /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		10F36DBD1C26FC25005D3B3C /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		10F4E7851C1D782200769DCB /* RESTClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +125,11 @@
 				10E695CB1C1E07F4009B00BD /* RESTClientConstants.swift */,
 				10F240241C22E54700B52D41 /* OnTheMapClient.swift */,
 				106D26B01C24AA5A0005F60A /* OnTheMapConstants.swift */,
+				10F36DB11C26C9CB005D3B3C /* PinMapViewController.swift */,
+				10F36DB31C26CA61005D3B3C /* PinListTableViewController.swift */,
+				10F36DB51C26D6F0005D3B3C /* StudentLocation.swift */,
+				10F36DBB1C26F762005D3B3C /* Utilities.swift */,
+				10F36DBD1C26FC25005D3B3C /* BaseViewController.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -288,13 +303,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10F36DBE1C26FC25005D3B3C /* BaseViewController.swift in Sources */,
 				100D00141C1C61E700047045 /* OnTheMap.xcdatamodeld in Sources */,
+				10F36DB61C26D6F0005D3B3C /* StudentLocation.swift in Sources */,
 				100D00411C1C880C00047045 /* UILoginTextField.swift in Sources */,
 				10E695CC1C1E07F4009B00BD /* RESTClientConstants.swift in Sources */,
 				106D26B11C24AA5A0005F60A /* OnTheMapConstants.swift in Sources */,
+				10F36DB21C26C9CB005D3B3C /* PinMapViewController.swift in Sources */,
+				10F36DBC1C26F762005D3B3C /* Utilities.swift in Sources */,
 				100D000E1C1C61E700047045 /* LoginViewController.swift in Sources */,
 				10F240251C22E54700B52D41 /* OnTheMapClient.swift in Sources */,
 				10F4E7861C1D782200769DCB /* RESTClient.swift in Sources */,
+				10F36DB41C26CA61005D3B3C /* PinListTableViewController.swift in Sources */,
 				100D000C1C1C61E700047045 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
