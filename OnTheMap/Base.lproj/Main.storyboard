@@ -49,7 +49,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97E-M5-f5d" customClass="UILoginTextField" customModule="OnTheMap" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="wouterdvs@gmail.com" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97E-M5-f5d" customClass="UILoginTextField" customModule="OnTheMap" customModuleProvider="target">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <color key="backgroundColor" red="0.98671368461243059" green="1" blue="0.990408317578924" alpha="0.47999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -74,7 +74,7 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rlM-ZW-cus" customClass="UILoginTextField" customModule="OnTheMap" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="udacitybeedog1985" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rlM-ZW-cus" customClass="UILoginTextField" customModule="OnTheMap" customModuleProvider="target">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <color key="backgroundColor" red="0.98671368459999997" green="1" blue="0.99040831760000003" alpha="0.47999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -435,7 +435,7 @@
         <!--Student Location View Controller-->
         <scene sceneID="iNP-0H-mt1">
             <objects>
-                <viewController storyboardIdentifier="StudentLocationViewController" id="rrw-gk-FVF" customClass="StudentLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StudentLocationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rrw-gk-FVF" customClass="StudentLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PlR-CP-i9k"/>
                         <viewControllerLayoutGuide type="bottom" id="CLP-z3-BlC"/>
@@ -542,7 +542,7 @@
                                                     <rect key="frame" x="138" y="101" width="127" height="48"/>
                                                 </variation>
                                                 <connections>
-                                                    <action selector="submitTouchUp:" destination="rrw-gk-FVF" eventType="touchDragInside" id="NFN-NP-3eg"/>
+                                                    <action selector="submitTouchUp:" destination="rrw-gk-FVF" eventType="touchUpInside" id="05e-NO-SAQ"/>
                                                 </connections>
                                             </button>
                                         </subviews>

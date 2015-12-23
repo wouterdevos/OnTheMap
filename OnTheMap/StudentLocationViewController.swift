@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class StudentLocationViewController: UIViewController, MKMapViewDelegate, UITextViewDelegate {
+class StudentLocationViewController: BaseViewController, MKMapViewDelegate, UITextViewDelegate {
     
     let whereAreYouStudyingToday = "Where are you\nstudying\ntoday?"
     let enterYourLocationHere = "Enter Your Location Here"
@@ -34,7 +34,6 @@ class StudentLocationViewController: UIViewController, MKMapViewDelegate, UIText
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
-    var tapRecognizer: UITapGestureRecognizer? = nil
     var activityIndicator = UIActivityIndicatorView()
     var location : CLLocation? = nil
     
@@ -57,25 +56,7 @@ class StudentLocationViewController: UIViewController, MKMapViewDelegate, UIText
         titleTextView.attributedText = attributedText
         titleTextView.textAlignment = NSTextAlignment.Center
         
-        // Initialise the tap recogniser
-        tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
-        tapRecognizer?.numberOfTapsRequired = 1
-        
         activityIndicatorView.stopAnimating()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Add tap recognizer to dismiss keyboard
-        view.addGestureRecognizer(tapRecognizer!)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Remove tap recognizer
-        view.removeGestureRecognizer(tapRecognizer!)
     }
     
     @IBAction func findOnMapTouchUp(sender: AnyObject) {
@@ -90,11 +71,25 @@ class StudentLocationViewController: UIViewController, MKMapViewDelegate, UIText
     }
     
     @IBAction func submitTouchUp(sender: AnyObject) {
+        let mapString = locationTextView.text
+        guard let link = linkTextView.text where link.characters.count > 0 && link != enterALinkToShareHere else {
+            Utilities.createAlertController(self, message: "Please enter a link")
+            return
+        }
         
+        OnTheMapClient.sharedInstance().postStudentLocation(mapString, mediaURL: link, location: location!) { (success, errorString) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if success {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                } else {
+                    Utilities.createAlertController(self, message: "Unable to submit a student location. Please try again later.")
+                }
+            })
+        }
     }
     
     @IBAction func cancelTouchUp(sender: AnyObject) {
-        
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
@@ -109,10 +104,6 @@ class StudentLocationViewController: UIViewController, MKMapViewDelegate, UIText
         if textView.text.isEmpty {
             textView.text = textView.tag == linkTextViewTag ? enterALinkToShareHere : enterYourLocationHere
         }
-    }
-    
-    func handleSingleTap(recognizer: UITapGestureRecognizer) {
-        self.view.endEditing(true)
     }
     
     func showActivityIndicator() {

@@ -12,11 +12,9 @@ import MapKit
 class OnTheMapClient : NSObject {
     
     var sessionID : String?
-    var userID : String?
     var key : String?
     var firstName : String?
     var lastName : String?
-    var location : String?
     var studentLocations = [StudentLocation]()
     
     // MARK: Udacity API calls
@@ -75,7 +73,7 @@ class OnTheMapClient : NSObject {
         }
         
         self.sessionID = sessionID
-        self.userID = key
+        self.key = key
         completionHandler(success: true, errorString: nil)
     }
     
@@ -129,7 +127,7 @@ class OnTheMapClient : NSObject {
         let headerFields = getParseHeaderFields()
         
         // Create url.
-        let urlString = OnTheMapClient.Constants.UdacityURL + OnTheMapClient.Methods.PublicUserData + userID!
+        let urlString = OnTheMapClient.Constants.UdacityURL + OnTheMapClient.Methods.PublicUserData + key!
         
         let restClient = RESTClient.sharedInstance()
         restClient.taskForGETMethod(urlString, headerFields: headerFields, queryParameters: nil) { (data, error) in
@@ -156,10 +154,6 @@ class OnTheMapClient : NSObject {
                 guard let lastName = user[OnTheMapClient.JSONResponseKeys.UserLastName] as? String else {
                     completionHandler(success: false, errorString: "Cannot find key 'last_name' in JSON")
                     return
-                }
-                
-                if let location = user[OnTheMapClient.JSONResponseKeys.UserLocation] as? String {
-                    self.location = location
                 }
                 
                 self.firstName = firstName
@@ -197,6 +191,41 @@ class OnTheMapClient : NSObject {
                 }
                 self.studentLocations = StudentLocation.studentLocationsFromResults(results)
                 completionHandler(success: true, errorString: nil)
+            }
+        }
+    }
+    
+    // Get a Student Location
+    func getStudentLocation(completionHandler: (success: Bool, results: [[String:AnyObject]]?, errorString: String?) -> Void) {
+        
+        // Specify header fields.
+        let headerFields = getParseHeaderFields()
+        
+        // Specify query parameters.
+        let queryParameters = [
+            OnTheMapClient.QueryKeys.Where: "{\"\(OnTheMapClient.JSONBodyKeys.UniqueKey)\":\"\(OnTheMapClient.sharedInstance().key!)\"}"
+        ]
+        
+        // Create url.
+        let urlString = OnTheMapClient.Constants.ParseURL + OnTheMapClient.Methods.StudentLocation
+        
+        let restClient = RESTClient.sharedInstance()
+        restClient.taskForGETMethod(urlString, headerFields: headerFields, queryParameters: queryParameters) { (data, error) in
+            
+            if let _ = error {
+                completionHandler(success: false, results: nil, errorString: "Failed to retrieve the student location")
+            } else {
+                guard let JSONResult = RESTClient.parseJSONWithCompletionHandler(data!) else {
+                    completionHandler(success: false, results: nil, errorString: "Cannot parse data as JSON!")
+                    return
+                }
+                
+                guard let results = JSONResult[OnTheMapClient.JSONResponseKeys.Results] as? [[String:AnyObject]] else {
+                    completionHandler(success: false, results: nil, errorString: "Cannot find key 'results' in JSON")
+                    return
+                }
+                
+                completionHandler(success: true, results: results, errorString: nil)
             }
         }
     }

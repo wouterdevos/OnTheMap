@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
 
     let gradientLayer = CAGradientLayer()
     
@@ -16,8 +16,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UILoginTextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    
-    var tapRecognizer: UITapGestureRecognizer? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,24 +37,6 @@ class LoginViewController: UIViewController {
         
         gradientLayer.frame = view.bounds
         view.layer.insertSublayer(gradientLayer, atIndex: 0)
-        
-        // Initialise the tap recogniser
-        tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
-        tapRecognizer?.numberOfTapsRequired = 1
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Add tap recognizer to dismiss keyboard
-        view.addGestureRecognizer(tapRecognizer!)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Remove tap recognizer
-        view.removeGestureRecognizer(tapRecognizer!)
     }
 
     @IBAction func loginButtonTouchUp(sender: AnyObject) {
@@ -71,24 +51,37 @@ class LoginViewController: UIViewController {
         }
         
         toggleUserInterface(false)
+        createSession(username, password: password)
+    }
+
+    @IBAction func signUpButtonTouchUp(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "https://www.udacity.com/account/auth#!/signup")!)
+    }
+    
+    func createSession(username: String, password: String) {
         OnTheMapClient.sharedInstance().createSession(username, password: password) { (success, errorString) in
             dispatch_async(dispatch_get_main_queue(), {
                 self.toggleUserInterface(true)
                 if success {
-                    // Go to next screen
-                    print("Successfully logged in")
-                    let tabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarController")
-                    self.presentViewController(tabBarController, animated: true, completion: nil)
+                    self.getPublicUserData()
                 } else {
-                    print(errorString!)
                     Utilities.createAlertController(self, message: errorString!)
                 }
             })
         }
     }
-
-    @IBAction func signUpButtonTouchUp(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(NSURL(string: "https://www.udacity.com/account/auth#!/signup")!)
+    
+    func getPublicUserData() {
+        OnTheMapClient.sharedInstance().getPublicUserData() { (success, errorString) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if success {
+                    let tabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarController")
+                    self.presentViewController(tabBarController, animated: true, completion: nil)
+                } else {
+                    Utilities.createAlertController(self, message: errorString!)
+                }
+            })
+        }
     }
     
     func toggleUserInterface(enabled: Bool) {

@@ -42,6 +42,11 @@ extension OnTheMapClient {
         static let StudentLocation = "1/classes/StudentLocation"
     }
     
+    struct QueryKeys {
+        
+        static let Where = "where"
+    }
+    
     struct JSONBodyKeys {
         
         // MARK: Udacity
