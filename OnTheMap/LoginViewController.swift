@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var progressIndicatorView: UIActivityIndicatorView!
     
+    var tapRecognizer: UITapGestureRecognizer? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,24 @@ class LoginViewController: UIViewController {
         
         gradientLayer.frame = view.bounds
         view.layer.insertSublayer(gradientLayer, atIndex: 0)
+        
+        // Initialise the tap recogniser
+        tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
+        tapRecognizer?.numberOfTapsRequired = 1
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Add tap recognizer to dismiss keyboard
+        view.addGestureRecognizer(tapRecognizer!)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Remove tap recognizer
+        view.removeGestureRecognizer(tapRecognizer!)
     }
 
     @IBAction func loginButtonTouchUp(sender: AnyObject) {

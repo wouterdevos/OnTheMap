@@ -18,6 +18,9 @@
 		100D00411C1C880C00047045 /* UILoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100D00401C1C880C00047045 /* UILoginTextField.swift */; };
 		106D26B11C24AA5A0005F60A /* OnTheMapConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D26B01C24AA5A0005F60A /* OnTheMapConstants.swift */; };
 		10E695CC1C1E07F4009B00BD /* RESTClientConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E695CB1C1E07F4009B00BD /* RESTClientConstants.swift */; };
+		10EA099B1C2A017D00CF4B31 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10EA09981C2A017D00CF4B31 /* Roboto-Medium.ttf */; };
+		10EA099C1C2A017D00CF4B31 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10EA09991C2A017D00CF4B31 /* Roboto-Regular.ttf */; };
+		10EA099D1C2A017D00CF4B31 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10EA099A1C2A017D00CF4B31 /* Roboto-Thin.ttf */; };
 		10EA2B9F1C29A20E00FB0AAF /* StudentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EA2B9E1C29A20E00FB0AAF /* StudentLocationViewController.swift */; };
 		10F240251C22E54700B52D41 /* OnTheMapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F240241C22E54700B52D41 /* OnTheMapClient.swift */; };
 		10F36DB21C26C9CB005D3B3C /* PinMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F36DB11C26C9CB005D3B3C /* PinMapViewController.swift */; };
@@ -60,12 +63,12 @@
 		100D002A1C1C61E700047045 /* OnTheMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnTheMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		100D002E1C1C61E700047045 /* OnTheMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheMapUITests.swift; sourceTree = "<group>"; };
 		100D00301C1C61E700047045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		100D003D1C1C697300047045 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		100D003E1C1C697300047045 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		100D003F1C1C697300047045 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		100D00401C1C880C00047045 /* UILoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILoginTextField.swift; sourceTree = "<group>"; };
 		106D26B01C24AA5A0005F60A /* OnTheMapConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapConstants.swift; sourceTree = "<group>"; };
 		10E695CB1C1E07F4009B00BD /* RESTClientConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTClientConstants.swift; sourceTree = "<group>"; };
+		10EA09981C2A017D00CF4B31 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		10EA09991C2A017D00CF4B31 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		10EA099A1C2A017D00CF4B31 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		10EA2B9E1C29A20E00FB0AAF /* StudentLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocationViewController.swift; sourceTree = "<group>"; };
 		10F240241C22E54700B52D41 /* OnTheMapClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapClient.swift; sourceTree = "<group>"; };
 		10F36DB11C26C9CB005D3B3C /* PinMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinMapViewController.swift; sourceTree = "<group>"; };
@@ -158,9 +161,9 @@
 		100D003C1C1C695B00047045 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				100D003D1C1C697300047045 /* Roboto-Medium.ttf */,
-				100D003E1C1C697300047045 /* Roboto-Regular.ttf */,
-				100D003F1C1C697300047045 /* Roboto-Thin.ttf */,
+				10EA09981C2A017D00CF4B31 /* Roboto-Medium.ttf */,
+				10EA09991C2A017D00CF4B31 /* Roboto-Regular.ttf */,
+				10EA099A1C2A017D00CF4B31 /* Roboto-Thin.ttf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -279,7 +282,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10EA099B1C2A017D00CF4B31 /* Roboto-Medium.ttf in Resources */,
 				100D00191C1C61E700047045 /* LaunchScreen.storyboard in Resources */,
+				10EA099D1C2A017D00CF4B31 /* Roboto-Thin.ttf in Resources */,
+				10EA099C1C2A017D00CF4B31 /* Roboto-Regular.ttf in Resources */,
 				100D00161C1C61E700047045 /* Assets.xcassets in Resources */,
 				100D00111C1C61E700047045 /* Main.storyboard in Resources */,
 			);
