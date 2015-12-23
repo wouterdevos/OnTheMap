@@ -39,4 +39,32 @@ class BaseViewController: UIViewController {
     func updateStudentLocations() {
         // Implement method in child class
     }
+    
+    func getPublicUserData() {
+        OnTheMapClient.sharedInstance().getPublicUserData() { (success, errorString) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if success {
+                    if let _ = OnTheMapClient.sharedInstance().location {
+                        self.createOverwriteAlertController()
+                    } else {
+                        Utilities.createAlertController(self, message: "Unable to Post a Student Location. Please try again later.")
+                    }
+                }
+            })
+        }
+    }
+    
+    func createOverwriteAlertController() {
+        let name = "\(OnTheMapClient.sharedInstance().firstName) \(OnTheMapClient.sharedInstance().lastName)"
+        let message = "User \"\(name)\" Has Already Posted a Student Location. Would You Like to Overwrite Their Location?"
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: .Alert)
+        let overwriteAction = UIAlertAction(title: "Overwrite", style: .Default) { (action) in
+            let studentLocationViewController = self.storyboard!.instantiateViewControllerWithIdentifier("StudentLocationViewController")
+            self.presentViewController(studentLocationViewController, animated: true, completion: nil)
+        }
+        alertController.addAction(overwriteAction)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
 }

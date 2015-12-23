@@ -77,6 +77,12 @@ extension OnTheMapClient {
         static let Status = "status"
         static let Error = "error"
         
+        // MARK: Udacity Public User Data
+        static let User = "user"
+        static let UserFirstName = "first_name"
+        static let UserLastName = "last_name"
+        static let UserLocation = "location"
+        
         // MARK: Parse student locations
         static let Results = "results"
         static let CreatedAt = "createdAt"

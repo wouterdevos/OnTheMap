@@ -25,6 +25,7 @@ class PinMapViewController: BaseViewController, MKMapViewDelegate {
     }
     
     @IBAction func addPinTouchUp(sender: AnyObject) {
+        getPublicUserData()
     }
     
     @IBAction func refreshMapTouchUp(sender: AnyObject) {

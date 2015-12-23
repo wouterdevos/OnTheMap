@@ -7,15 +7,21 @@
 //
 
 import Foundation
+import MapKit
 
 class OnTheMapClient : NSObject {
     
     var sessionID : String?
     var userID : String?
+    var key : String?
+    var firstName : String?
+    var lastName : String?
+    var location : String?
     var studentLocations = [StudentLocation]()
     
-    // MARK: Create Session
+    // MARK: Udacity API calls
     
+    // Create Session
     func createSession(username: String, password: String, completionHandler: (success: Bool, errorString: String?) -> Void) {
         
         // Specify header fields and the HTTP body.
@@ -58,7 +64,18 @@ class OnTheMapClient : NSObject {
             return
         }
         
+        guard let account = JSONResult[OnTheMapClient.JSONResponseKeys.Account] as? [String:AnyObject] else {
+            completionHandler(success: false, errorString: "Cannot find key 'account' in JSON")
+            return
+        }
+        
+        guard let key = account[OnTheMapClient.JSONResponseKeys.Key] as? String else {
+            completionHandler(success: false, errorString: "Cannot find key 'key' in JSON")
+            return
+        }
+        
         self.sessionID = sessionID
+        self.userID = key
         completionHandler(success: true, errorString: nil)
     }
     
@@ -75,8 +92,7 @@ class OnTheMapClient : NSObject {
         completionHandler(success: false, errorString: errorString)
     }
     
-    // MARK: Delete Session
-    
+    // Delete Session
     func deleteSession(completionHandler: (success: Bool, errorString: String?) -> Void) {
         
         // Specify header fields.
@@ -106,8 +122,56 @@ class OnTheMapClient : NSObject {
         }
     }
     
-    // MARK: Get Student Locations
+    // Get Public User Data
+    func getPublicUserData(completionHandler: (success: Bool, errorString: String?) -> Void) {
+        
+        // Specify header fields.
+        let headerFields = getParseHeaderFields()
+        
+        // Create url.
+        let urlString = OnTheMapClient.Constants.UdacityURL + OnTheMapClient.Methods.PublicUserData + userID!
+        
+        let restClient = RESTClient.sharedInstance()
+        restClient.taskForGETMethod(urlString, headerFields: headerFields, queryParameters: nil) { (data, error) in
+            
+            if let _ = error {
+                completionHandler(success: false, errorString: "Failed to retrieve public user data")
+            } else {
+                let skipData = RESTClient.skipResponseCharacters(data!)
+                guard let JSONResult = RESTClient.parseJSONWithCompletionHandler(skipData) else {
+                    completionHandler(success: false, errorString: "Cannot parse data as JSON!")
+                    return
+                }
+                
+                guard let user = JSONResult[OnTheMapClient.JSONResponseKeys.User] as? [String:AnyObject] else {
+                    completionHandler(success: false, errorString: "Cannot find key 'user' in JSON")
+                    return
+                }
+                
+                guard let firstName = user[OnTheMapClient.JSONResponseKeys.UserFirstName] as? String else {
+                    completionHandler(success: false, errorString: "Cannot find key 'first_name' in JSON")
+                    return
+                }
+                
+                guard let lastName = user[OnTheMapClient.JSONResponseKeys.UserLastName] as? String else {
+                    completionHandler(success: false, errorString: "Cannot find key 'last_name' in JSON")
+                    return
+                }
+                
+                if let location = user[OnTheMapClient.JSONResponseKeys.UserLocation] as? String {
+                    self.location = location
+                }
+                
+                self.firstName = firstName
+                self.lastName = lastName
+                completionHandler(success: true, errorString: nil)
+            }
+        }
+    }
     
+    // MARK: Parse API calls
+    
+    // Get Student Locations
     func getStudentLocations(completionHandler: (success: Bool, errorString: String?) -> Void) {
         
         // Specify header fields.
@@ -137,6 +201,35 @@ class OnTheMapClient : NSObject {
         }
     }
     
+    // Post Student Location
+    func postStudentLocation(mapString: String, mediaURL: String, location: CLLocation, completionHandler: (success: Bool, errorString: String?) -> Void) {
+        
+        // Specify header fields and the HTTP body.
+        var headerFields = getParseHeaderFields()
+        headerFields[OnTheMapClient.HeaderFields.ContentType] = "application/json"
+        let bodyParameters: [String:AnyObject] = [
+            OnTheMapClient.JSONBodyKeys.UniqueKey: key!,
+            OnTheMapClient.JSONBodyKeys.FirstName: firstName!,
+            OnTheMapClient.JSONBodyKeys.LastName: lastName!,
+            OnTheMapClient.JSONBodyKeys.MapString: mapString,
+            OnTheMapClient.JSONBodyKeys.MediaURL: mediaURL,
+            OnTheMapClient.JSONBodyKeys.Latitude: location.coordinate.latitude,
+            OnTheMapClient.JSONBodyKeys.Longitude: location.coordinate.longitude
+        ]
+        
+        // Create url.
+        let urlString = OnTheMapClient.Constants.ParseURL + OnTheMapClient.Methods.StudentLocation
+        
+        let restClient = RESTClient.sharedInstance()
+        restClient.taskForPOSTMethod(urlString, headerFields: headerFields, bodyParameters: bodyParameters) { (data, error) in
+            
+            if let _ = error {
+                completionHandler(success: false, errorString: "Failed to post student location")
+            } else {
+                completionHandler(success: true, errorString: nil)
+            }
+        }
+    }
     
     func getHeaderFields() -> [String:String] {
         

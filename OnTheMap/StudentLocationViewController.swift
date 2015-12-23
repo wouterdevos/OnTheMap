@@ -32,9 +32,11 @@ class StudentLocationViewController: UIViewController, MKMapViewDelegate, UIText
     @IBOutlet weak var middleView: UIView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     var tapRecognizer: UITapGestureRecognizer? = nil
     var activityIndicator = UIActivityIndicatorView()
+    var location : CLLocation? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +60,8 @@ class StudentLocationViewController: UIViewController, MKMapViewDelegate, UIText
         // Initialise the tap recogniser
         tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
         tapRecognizer?.numberOfTapsRequired = 1
+        
+        activityIndicatorView.stopAnimating()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -77,7 +81,7 @@ class StudentLocationViewController: UIViewController, MKMapViewDelegate, UIText
     @IBAction func findOnMapTouchUp(sender: AnyObject) {
         let location = locationTextView.text
         let geocoder = CLGeocoder()
-        showActivityIndicator()
+        toggleUserInterface(false)
         geocoder.geocodeAddressString(location) { (placemarks, error) in
             dispatch_async(dispatch_get_main_queue(), {
                 self.handleGeocodeResult(placemarks)
@@ -124,8 +128,20 @@ class StudentLocationViewController: UIViewController, MKMapViewDelegate, UIText
         activityIndicator.stopAnimating()
     }
     
+    func toggleUserInterface(editable: Bool) {
+        linkTextView.editable = editable
+        locationTextView.editable = editable
+        findOnMapButton.enabled = editable
+        submitButton.enabled = editable
+        if editable {
+            activityIndicatorView.stopAnimating()
+        } else {
+            activityIndicatorView.startAnimating()
+        }
+    }
+    
     func handleGeocodeResult(placemarks: [CLPlacemark]?) {
-        hideActivityIndictor()
+        toggleUserInterface(true)
         if let placemark = placemarks![0] as? CLPlacemark {
             // Hide/show the title/link text view.
             titleTextView.hidden = true
@@ -145,6 +161,8 @@ class StudentLocationViewController: UIViewController, MKMapViewDelegate, UIText
             mapView.userInteractionEnabled = false
             let annotations = [MKPlacemark(placemark: placemark)]
             mapView.showAnnotations(annotations, animated: true)
+            
+            location = placemark.location
         }
     }
 }

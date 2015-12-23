@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rrw-gk-FVF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -42,18 +42,12 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UdacityLogo" translatesAutoresizingMaskIntoConstraints="NO" id="5J5-gM-4nu">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="187" y="51" width="48" height="48"/>
-                                </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4zH-ZU-ZXr">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="119" y="116" width="162" height="26"/>
-                                </variation>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97E-M5-f5d" customClass="UILoginTextField" customModule="OnTheMap" customModuleProvider="target">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
@@ -78,9 +72,6 @@
                                     <mask key="constraints">
                                         <include reference="4lt-ah-CjG"/>
                                     </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="163" width="360" height="50"/>
                                 </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rlM-ZW-cus" customClass="UILoginTextField" customModule="OnTheMap" customModuleProvider="target">
@@ -107,9 +98,6 @@
                                         <include reference="few-pG-K3C"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="234" width="360" height="50"/>
-                                </variation>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ar6-MS-FPs">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -129,18 +117,12 @@
                                         <include reference="7iQ-wI-LD7"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="20" y="305" width="360" height="50"/>
-                                </variation>
                                 <connections>
                                     <action selector="loginButtonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pXN-ah-xNc"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="dbr-i4-zBE">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="dbr-i4-zBE">
                                 <rect key="frame" x="-10" y="-10" width="20" height="20"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="190" y="437" width="20" height="20"/>
-                                </variation>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6Z-rd-0v4">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -149,7 +131,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="40" y="377" width="320" height="38"/>
+                                    <rect key="frame" x="40" y="397" width="320" height="38"/>
                                 </variation>
                                 <connections>
                                     <action selector="signUpButtonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k5r-pc-fWF"/>
@@ -250,10 +232,10 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="dbr-i4-zBE" id="nBV-Al-sDl"/>
                         <outlet property="emailTextView" destination="97E-M5-f5d" id="hEg-pi-LhK"/>
                         <outlet property="loginButton" destination="ar6-MS-FPs" id="zDQ-ob-Fkm"/>
                         <outlet property="passwordTextField" destination="rlM-ZW-cus" id="hkk-b3-wUL"/>
-                        <outlet property="progressIndicatorView" destination="dbr-i4-zBE" id="T1A-N8-uMP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -453,7 +435,7 @@
         <!--Student Location View Controller-->
         <scene sceneID="iNP-0H-mt1">
             <objects>
-                <viewController id="rrw-gk-FVF" customClass="StudentLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StudentLocationViewController" id="rrw-gk-FVF" customClass="StudentLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PlR-CP-i9k"/>
                         <viewControllerLayoutGuide type="bottom" id="CLP-z3-BlC"/>
@@ -471,6 +453,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bfK-Ck-eEZ" userLabel="Location View">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <subviews>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="9cL-Up-qxw">
+                                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                            </activityIndicatorView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter Your Location Here" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5a6-OW-Ri8">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -481,6 +466,12 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.30980392156862746" green="0.53333333333333333" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="9cL-Up-qxw" firstAttribute="centerY" secondItem="bfK-Ck-eEZ" secondAttribute="centerY" id="7hk-b5-da5">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="-1"/>
+                                            </constraint>
+                                            <constraint firstItem="9cL-Up-qxw" firstAttribute="centerX" secondItem="bfK-Ck-eEZ" secondAttribute="centerX" id="JUu-jT-lLB">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="1"/>
+                                            </constraint>
                                             <constraint firstAttribute="trailing" secondItem="5a6-OW-Ri8" secondAttribute="trailing" constant="8" id="OWM-M5-vg0"/>
                                             <constraint firstAttribute="bottom" secondItem="5a6-OW-Ri8" secondAttribute="bottom" constant="8" id="cwT-nE-zyE"/>
                                             <constraint firstItem="5a6-OW-Ri8" firstAttribute="top" secondItem="bfK-Ck-eEZ" secondAttribute="top" constant="8" id="oAS-ho-fnP"/>
@@ -488,9 +479,12 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="subviews">
+                                                <exclude reference="9cL-Up-qxw"/>
                                                 <exclude reference="5a6-OW-Ri8"/>
                                             </mask>
                                             <mask key="constraints">
+                                                <exclude reference="7hk-b5-da5"/>
+                                                <exclude reference="JUu-jT-lLB"/>
                                                 <exclude reference="OWM-M5-vg0"/>
                                                 <exclude reference="cwT-nE-zyE"/>
                                                 <exclude reference="oAS-ho-fnP"/>
@@ -499,9 +493,12 @@
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
                                             <mask key="subviews">
+                                                <include reference="9cL-Up-qxw"/>
                                                 <include reference="5a6-OW-Ri8"/>
                                             </mask>
                                             <mask key="constraints">
+                                                <include reference="7hk-b5-da5"/>
+                                                <include reference="JUu-jT-lLB"/>
                                                 <include reference="OWM-M5-vg0"/>
                                                 <include reference="cwT-nE-zyE"/>
                                                 <include reference="oAS-ho-fnP"/>
@@ -541,6 +538,9 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                    <rect key="frame" x="138" y="101" width="127" height="48"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="submitTouchUp:" destination="rrw-gk-FVF" eventType="touchDragInside" id="NFN-NP-3eg"/>
                                                 </connections>
@@ -649,13 +649,13 @@
                                             <color key="titleColor" red="0.050980392156862744" green="0.24313725490196078" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="345" y="24" width="48" height="30"/>
+                                            <rect key="frame" x="346" y="24" width="47" height="30"/>
                                         </variation>
                                         <connections>
                                             <action selector="cancelTouchUp:" destination="rrw-gk-FVF" eventType="touchUpInside" id="TCK-aN-JiH"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="WhereAreYouStudyingTodayView" editable="NO" text="Where are you studying today?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Uik-r1-w38" userLabel="Where Are You Studying Today View">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Where are you studying today?" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Uik-r1-w38" userLabel="Where Are You Studying Today View">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="0.050980392156862744" green="0.24313725490196078" blue="0.44705882352941173" alpha="1" colorSpace="calibratedRGB"/>
@@ -692,6 +692,8 @@
                                         <exclude reference="goT-Is-Dne"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <exclude reference="8Pb-oH-IIb"/>
+                                        <exclude reference="99j-m9-hgz"/>
                                         <exclude reference="KbK-7x-qv2"/>
                                         <exclude reference="Lue-5M-lbQ"/>
                                         <exclude reference="i05-Bb-joM"/>
@@ -700,8 +702,6 @@
                                         <exclude reference="Mpc-I1-lMP"/>
                                         <exclude reference="gHV-Dz-uLC"/>
                                         <exclude reference="rKt-Xr-Ch9"/>
-                                        <exclude reference="8Pb-oH-IIb"/>
-                                        <exclude reference="99j-m9-hgz"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -711,6 +711,8 @@
                                         <include reference="goT-Is-Dne"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <include reference="8Pb-oH-IIb"/>
+                                        <include reference="99j-m9-hgz"/>
                                         <include reference="KbK-7x-qv2"/>
                                         <include reference="Lue-5M-lbQ"/>
                                         <include reference="i05-Bb-joM"/>
@@ -719,8 +721,6 @@
                                         <include reference="Mpc-I1-lMP"/>
                                         <include reference="gHV-Dz-uLC"/>
                                         <include reference="rKt-Xr-Ch9"/>
-                                        <include reference="8Pb-oH-IIb"/>
-                                        <include reference="99j-m9-hgz"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -774,6 +774,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="9cL-Up-qxw" id="N34-Av-SFZ"/>
                         <outlet property="bottomView" destination="68z-Xh-oOU" id="50e-Qm-5qh"/>
                         <outlet property="findOnMapButton" destination="Mtx-yO-QrC" id="kwC-lU-K2M"/>
                         <outlet property="linkTextView" destination="goT-Is-Dne" id="oRy-yI-JOi"/>

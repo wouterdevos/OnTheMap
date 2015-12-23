@@ -20,6 +20,7 @@ class PinListTableViewController: BaseViewController, UITableViewDataSource, UIT
     }
     
     @IBAction func addPinTouchUp(sender: AnyObject) {
+        getPublicUserData()
     }
     
     @IBAction func refreshListTouchUp(sender: AnyObject) {

@@ -15,14 +15,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextView: UILoginTextField!
     @IBOutlet weak var passwordTextField: UILoginTextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var progressIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     var tapRecognizer: UITapGestureRecognizer? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        progressIndicatorView.hidesWhenStopped = true
-        progressIndicatorView.stopAnimating()
+        activityIndicatorView.hidesWhenStopped = true
+        activityIndicatorView.stopAnimating()
         
         // Create the top and bottom colors
         let topColor = UIColor(red: 255/255, green: 153/255, blue: 10/255, alpha: 1)
@@ -60,13 +60,13 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginButtonTouchUp(sender: AnyObject) {
-        guard let username = emailTextView.text else {
-            // Display error message
+        guard let username = emailTextView.text where !username.isEmpty else {
+            Utilities.createAlertController(self, message: "Please enter a username")
             return
         }
         
-        guard let password = passwordTextField.text else {
-            // Display error message
+        guard let password = passwordTextField.text where !password.isEmpty else {
+            Utilities.createAlertController(self, message: "Please enter a password")
             return
         }
         
@@ -96,9 +96,9 @@ class LoginViewController: UIViewController {
         passwordTextField.enabled = enabled
         loginButton.enabled = enabled
         if enabled {
-            progressIndicatorView.stopAnimating()
+            activityIndicatorView.stopAnimating()
         } else {
-            progressIndicatorView.startAnimating()
+            activityIndicatorView.startAnimating()
         }
     }
 }
