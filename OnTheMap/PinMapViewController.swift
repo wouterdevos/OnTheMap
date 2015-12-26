@@ -9,9 +9,11 @@
 import UIKit
 import MapKit
 
-class PinMapViewController: BaseViewController, MKMapViewDelegate {
+class PinMapViewController: BaseDataDisplayViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +69,7 @@ class PinMapViewController: BaseViewController, MKMapViewDelegate {
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        
         let reuseId = "pin"
         
         var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
@@ -74,7 +77,7 @@ class PinMapViewController: BaseViewController, MKMapViewDelegate {
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
-            pinView!.pinColor = .Red
+            pinView!.pinTintColor = MKPinAnnotationView.redPinColor()
             pinView!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
         }
         else {
@@ -91,5 +94,15 @@ class PinMapViewController: BaseViewController, MKMapViewDelegate {
                 app.openURL(NSURL(string: toOpen)!)
             }
         }
+    }
+    
+    override func showActivityIndicatorView() {
+        loadingView.hidden = false
+        activityIndicatorView.startAnimating()
+    }
+    
+    override func hideActivityIndicatorView() {
+        loadingView.hidden = true
+        activityIndicatorView.stopAnimating()
     }
 }

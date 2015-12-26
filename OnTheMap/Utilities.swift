@@ -11,7 +11,7 @@ import UIKit
 class Utilities {
     
     static func createAlertController(viewController: UIViewController, message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         viewController.presentViewController(alertController, animated: true, completion: nil)
     }

@@ -8,11 +8,16 @@
 
 import UIKit
 
-class PinListTableViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class PinListTableViewController: BaseDataDisplayViewController, UITableViewDataSource {
+    
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
+//        tableView.delegate = self
+//        tableView.dataSource = self
     }
     
     @IBAction func logoutTouchUp(sender: AnyObject) {
@@ -46,5 +51,18 @@ class PinListTableViewController: BaseViewController, UITableViewDataSource, UIT
         
         let studentLocation = OnTheMapClient.sharedInstance().studentLocations[indexPath.row]
         UIApplication.sharedApplication().openURL(NSURL(string: studentLocation.mediaURL)!)
+    }
+    
+    override func showActivityIndicatorView() {
+        activityIndicatorView.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        activityIndicatorView.center = tableView.center
+        activityIndicatorView.hidesWhenStopped = true
+        activityIndicatorView.activityIndicatorViewStyle = .Gray
+        tableView.addSubview(activityIndicatorView)
+        activityIndicatorView.startAnimating()
+    }
+    
+    override func hideActivityIndicatorView() {
+        activityIndicatorView.stopAnimating()
     }
 }

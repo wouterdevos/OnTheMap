@@ -15,6 +15,7 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var emailTextView: UILoginTextField!
     @IBOutlet weak var passwordTextField: UILoginTextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
@@ -61,10 +62,10 @@ class LoginViewController: BaseViewController {
     func createSession(username: String, password: String) {
         OnTheMapClient.sharedInstance().createSession(username, password: password) { (success, errorString) in
             dispatch_async(dispatch_get_main_queue(), {
-                self.toggleUserInterface(true)
                 if success {
                     self.getPublicUserData()
                 } else {
+                    self.toggleUserInterface(true)
                     Utilities.createAlertController(self, message: errorString!)
                 }
             })
@@ -74,6 +75,7 @@ class LoginViewController: BaseViewController {
     func getPublicUserData() {
         OnTheMapClient.sharedInstance().getPublicUserData() { (success, errorString) in
             dispatch_async(dispatch_get_main_queue(), {
+                self.toggleUserInterface(true)
                 if success {
                     let tabBarController = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarController")
                     self.presentViewController(tabBarController, animated: true, completion: nil)
@@ -88,6 +90,7 @@ class LoginViewController: BaseViewController {
         emailTextView.enabled = enabled
         passwordTextField.enabled = enabled
         loginButton.enabled = enabled
+        signUpButton.enabled = enabled
         if enabled {
             activityIndicatorView.stopAnimating()
         } else {
