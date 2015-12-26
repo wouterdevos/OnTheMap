@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PinListTableViewController: BaseDataDisplayViewController, UITableViewDataSource {
+class PinListTableViewController: BaseDataDisplayViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -16,8 +16,8 @@ class PinListTableViewController: BaseDataDisplayViewController, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        tableView.delegate = self
-//        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     @IBAction func logoutTouchUp(sender: AnyObject) {
