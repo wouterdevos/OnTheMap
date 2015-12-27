@@ -275,38 +275,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ND9-3s-1Zu">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="pEl-u9-UTb">
-                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aMD-6w-cEs">
-                                            <rect key="frame" x="-10" y="-10" width="20" height="20"/>
-                                        </activityIndicatorView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstItem="aMD-6w-cEs" firstAttribute="centerX" secondItem="pEl-u9-UTb" secondAttribute="centerX" id="6ad-iC-8b9"/>
-                                        <constraint firstItem="aMD-6w-cEs" firstAttribute="centerY" secondItem="pEl-u9-UTb" secondAttribute="centerY" id="H2T-xo-ShC"/>
-                                    </constraints>
-                                    <variation key="default">
-                                        <mask key="subviews">
-                                            <exclude reference="aMD-6w-cEs"/>
-                                        </mask>
-                                        <mask key="constraints">
-                                            <exclude reference="6ad-iC-8b9"/>
-                                            <exclude reference="H2T-xo-ShC"/>
-                                        </mask>
-                                    </variation>
-                                    <variation key="heightClass=regular-widthClass=compact">
-                                        <mask key="subviews">
-                                            <include reference="aMD-6w-cEs"/>
-                                        </mask>
-                                        <mask key="constraints">
-                                            <include reference="6ad-iC-8b9"/>
-                                            <include reference="H2T-xo-ShC"/>
-                                        </mask>
-                                    </variation>
-                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentLocationTableViewCell" textLabel="uLW-d0-sb5" imageView="J0Q-UT-rGG" style="IBUITableViewCellStyleDefault" id="3AH-U8-Bok">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -338,34 +306,79 @@
                                     <outlet property="delegate" destination="AEx-q4-zrT" id="0Be-QC-T2L"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pEl-u9-UTb">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aMD-6w-cEs">
+                                        <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="aMD-6w-cEs" firstAttribute="centerY" secondItem="pEl-u9-UTb" secondAttribute="centerY" id="AXm-Hc-Z2X"/>
+                                    <constraint firstItem="aMD-6w-cEs" firstAttribute="centerX" secondItem="pEl-u9-UTb" secondAttribute="centerX" id="fPI-Nh-MTv"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="aMD-6w-cEs"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="AXm-Hc-Z2X"/>
+                                        <exclude reference="fPI-Nh-MTv"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="aMD-6w-cEs"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="AXm-Hc-Z2X"/>
+                                        <include reference="fPI-Nh-MTv"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pEl-u9-UTb" firstAttribute="leading" secondItem="tk2-Eu-qwo" secondAttribute="leadingMargin" constant="-20" id="6mH-XK-l2j"/>
                             <constraint firstItem="lyr-Xw-5OK" firstAttribute="top" secondItem="ND9-3s-1Zu" secondAttribute="bottom" id="HTT-d9-Dne"/>
+                            <constraint firstItem="lyr-Xw-5OK" firstAttribute="top" secondItem="pEl-u9-UTb" secondAttribute="bottom" id="HZt-HK-hEJ"/>
                             <constraint firstItem="ND9-3s-1Zu" firstAttribute="top" secondItem="MKh-IW-5OG" secondAttribute="bottom" id="Jkt-QE-qgR"/>
                             <constraint firstItem="ND9-3s-1Zu" firstAttribute="leading" secondItem="tk2-Eu-qwo" secondAttribute="leadingMargin" constant="-20" id="NC9-Uj-Rrq"/>
+                            <constraint firstItem="pEl-u9-UTb" firstAttribute="top" secondItem="MKh-IW-5OG" secondAttribute="bottom" id="T0V-4Z-cuJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ND9-3s-1Zu" secondAttribute="trailing" constant="-20" id="Tjn-73-KxZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pEl-u9-UTb" secondAttribute="trailing" constant="-20" id="cby-N5-2cE"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="ND9-3s-1Zu"/>
+                                <exclude reference="pEl-u9-UTb"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="HTT-d9-Dne"/>
                                 <exclude reference="Jkt-QE-qgR"/>
                                 <exclude reference="NC9-Uj-Rrq"/>
                                 <exclude reference="Tjn-73-KxZ"/>
+                                <exclude reference="6mH-XK-l2j"/>
+                                <exclude reference="T0V-4Z-cuJ"/>
+                                <exclude reference="cby-N5-2cE"/>
+                                <exclude reference="HTT-d9-Dne"/>
+                                <exclude reference="HZt-HK-hEJ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="ND9-3s-1Zu"/>
+                                <include reference="pEl-u9-UTb"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="HTT-d9-Dne"/>
                                 <include reference="Jkt-QE-qgR"/>
                                 <include reference="NC9-Uj-Rrq"/>
                                 <include reference="Tjn-73-KxZ"/>
+                                <include reference="6mH-XK-l2j"/>
+                                <include reference="T0V-4Z-cuJ"/>
+                                <include reference="cby-N5-2cE"/>
+                                <include reference="HTT-d9-Dne"/>
+                                <include reference="HZt-HK-hEJ"/>
                             </mask>
                         </variation>
                     </view>

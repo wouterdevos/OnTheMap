@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseDataDisplayViewController: BaseViewController, StudentLocationViewControllerDelegate {
+class BaseDataDisplayViewController: UIViewController, StudentLocationViewControllerDelegate {
     
     func update() {
         getStudentLocations()
@@ -89,5 +89,25 @@ class BaseDataDisplayViewController: BaseViewController, StudentLocationViewCont
         let studentLocationViewController = self.storyboard!.instantiateViewControllerWithIdentifier("StudentLocationViewController") as? StudentLocationViewController
         studentLocationViewController?.delegate = self
         self.presentViewController(studentLocationViewController!, animated: true, completion: nil)
+    }
+    
+    func openURL(urlString: String?) {
+        if canOpenURL(urlString) {
+            UIApplication.sharedApplication().openURL(NSURL(string: urlString!)!)
+        } else {
+            Utilities.createAlertController(self, message: "Unable to open link.")
+        }
+    }
+    
+    func canOpenURL(urlString: String?) -> Bool {
+        // Check if the url string is not nil
+        if let urlString = urlString {
+            // Create a NSURL instance
+            if let url = NSURL(string: urlString) {
+                // Check if the application can open the NSURL instance
+                return UIApplication.sharedApplication().canOpenURL(url)
+            }
+        }
+        return false
     }
 }

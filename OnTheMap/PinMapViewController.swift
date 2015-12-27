@@ -75,12 +75,14 @@ class PinMapViewController: BaseDataDisplayViewController, MKMapViewDelegate {
         var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
         
         if pinView == nil {
+            // Create a new pin view and initialise it.
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
             pinView!.pinTintColor = MKPinAnnotationView.redPinColor()
             pinView!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
         }
         else {
+            // Reuse an existing pin view and set the annotation.
             pinView!.annotation = annotation
         }
         
@@ -89,10 +91,8 @@ class PinMapViewController: BaseDataDisplayViewController, MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            let app = UIApplication.sharedApplication()
-            if let toOpen = view.annotation?.subtitle! {
-                app.openURL(NSURL(string: toOpen)!)
-            }
+            let subtitle = view.annotation?.subtitle!
+            openURL(subtitle)
         }
     }
     

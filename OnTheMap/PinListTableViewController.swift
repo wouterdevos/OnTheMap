@@ -54,7 +54,8 @@ class PinListTableViewController: BaseDataDisplayViewController, UITableViewData
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let studentLocation = OnTheMapClient.sharedInstance().studentLocations[indexPath.row]
-        UIApplication.sharedApplication().openURL(NSURL(string: studentLocation.mediaURL)!)
+        let urlString = studentLocation.mediaURL
+        openURL(urlString)
     }
     
     override func showActivityIndicatorView() {
