@@ -1,2 +1,2 @@
 # OnTheMap
-Implementation of the Udacity OnTheMap assignment.
+Project 3 for the Udacity iOS Developer Nanodegree
