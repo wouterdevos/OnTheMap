@@ -13,7 +13,7 @@ protocol StudentLocationViewControllerDelegate {
     func update()
 }
 
-class StudentLocationViewController: BaseViewController, MKMapViewDelegate, UITextViewDelegate {
+class StudentLocationViewController: BaseViewController, MKMapViewDelegate, UITextFieldDelegate {
     
     let whereAreYouStudyingToday = "Where are you\nstudying\ntoday?"
     let enterYourLocationHere = "Enter Your Location Here"
@@ -28,9 +28,10 @@ class StudentLocationViewController: BaseViewController, MKMapViewDelegate, UITe
     let linkTextViewTag = 0
     let locationTextViewTag = 1
     
+    
     @IBOutlet weak var titleTextView: UITextView!
-    @IBOutlet weak var linkTextView: UITextView!
-    @IBOutlet weak var locationTextView: UITextView!
+    @IBOutlet weak var linkTextField: UITextField!
+    @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var findOnMapButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var topView: UIView!
@@ -46,12 +47,12 @@ class StudentLocationViewController: BaseViewController, MKMapViewDelegate, UITe
         super.viewDidLoad()
         
         // Set the tags for the text views.
-        linkTextView.tag = linkTextViewTag
-        locationTextView.tag = locationTextViewTag
+        linkTextField.tag = linkTextViewTag
+        locationTextField.tag = locationTextViewTag
         
         // Set the delegates for the text views.
-        linkTextView.delegate = self
-        locationTextView.delegate = self
+        linkTextField.delegate = self
+        locationTextField.delegate = self
         
         // Configure the text for the titleTextView.
         let attributedText = NSMutableAttributedString(string: whereAreYouStudyingToday, attributes: [
@@ -65,7 +66,7 @@ class StudentLocationViewController: BaseViewController, MKMapViewDelegate, UITe
     }
     
     @IBAction func findOnMapTouchUp(sender: AnyObject) {
-        let location = locationTextView.text
+        let location = locationTextField.text!
         let geocoder = CLGeocoder()
         toggleUserInterface(false)
         geocoder.geocodeAddressString(location) { (placemarks, error) in
@@ -76,8 +77,8 @@ class StudentLocationViewController: BaseViewController, MKMapViewDelegate, UITe
     }
     
     @IBAction func submitTouchUp(sender: AnyObject) {
-        let mapString = locationTextView.text
-        guard let link = linkTextView.text where link.characters.count > 0 && link != enterALinkToShareHere else {
+        let mapString = locationTextField.text!
+        guard let link = linkTextField.text where link.characters.count > 0 && link != enterALinkToShareHere else {
             Utilities.createAlertController(self, message: "Please enter a link")
             return
         }
@@ -100,39 +101,26 @@ class StudentLocationViewController: BaseViewController, MKMapViewDelegate, UITe
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func textViewDidBeginEditing(textView: UITextView) {
-        textView.textAlignment = NSTextAlignment.Left
-        if textView.text == enterALinkToShareHere || textView.text == enterYourLocationHere {
-            textView.text = ""
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.textAlignment = NSTextAlignment.Left
+        if textField.text == enterALinkToShareHere || textField.text == enterYourLocationHere {
+            textField.text = ""
         }
     }
     
-    func textViewDidEndEditing(textView: UITextView) {
-        textView.textAlignment = NSTextAlignment.Center
-        if textView.text.isEmpty {
-            textView.text = textView.tag == linkTextViewTag ? enterALinkToShareHere : enterYourLocationHere
+    func textFieldDidEndEditing(textField: UITextField) {
+        textField.textAlignment = NSTextAlignment.Center
+        if let text = textField.text where text.isEmpty {
+            textField.text = textField.tag == linkTextViewTag ? enterALinkToShareHere : enterYourLocationHere
         }
     }
     
-//    func showActivityIndicator() {
-//        activityIndicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
-//        activityIndicator.center = view.center
-//        activityIndicator.hidesWhenStopped = true
-//        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
-//        view.addSubview(activityIndicator)
-//        activityIndicator.startAnimating()
-//    }
-//    
-//    func hideActivityIndictor() {
-//        activityIndicator.stopAnimating()
-//    }
-    
-    func toggleUserInterface(editable: Bool) {
-        linkTextView.editable = editable
-        locationTextView.editable = editable
-        findOnMapButton.enabled = editable
-        submitButton.enabled = editable
-        if editable {
+    func toggleUserInterface(enabled: Bool) {
+        linkTextField.enabled = enabled
+        locationTextField.enabled = enabled
+        findOnMapButton.enabled = enabled
+        submitButton.enabled = enabled
+        if enabled {
             activityIndicatorView.stopAnimating()
         } else {
             activityIndicatorView.startAnimating()
@@ -141,11 +129,16 @@ class StudentLocationViewController: BaseViewController, MKMapViewDelegate, UITe
     
     func handleGeocodeResult(placemarks: [CLPlacemark]?) {
         toggleUserInterface(true)
-        if let placemark = placemarks![0] as? CLPlacemark {
+        guard let results = placemarks where results.count > 0 else {
+            Utilities.createAlertController(self, message: "No geocoding results available. Please try again.")
+            return
+        }
+        
+        if let placemark = results[0] as? CLPlacemark {
             // Hide the title and location text view and show the link text view.
             titleTextView.hidden = true
-            locationTextView.hidden = true
-            linkTextView.hidden = false
+            locationTextField.hidden = true
+            linkTextField.hidden = false
             
             // Hide/show the 'find on map'/submit button.
             findOnMapButton.hidden = true

@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/StudentLocationViewController.swift"
-            timestampString = "472828340.519816"
+            timestampString = "472872974.56172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "handleGeocodeResult(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/StudentLocationViewController.swift"
-            timestampString = "472828340.519816"
+            timestampString = "472871344.086109"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "submitTouchUp(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/StudentLocationViewController.swift"
-            timestampString = "472828340.519816"
+            timestampString = "472871344.086109"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "submitTouchUp(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/StudentLocationViewController.swift"
-            timestampString = "472828340.519816"
+            timestampString = "472871344.086109"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "cancelTouchUp(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/PinListTableViewController.swift"
-            timestampString = "472858659.206382"
+            timestampString = "472866405.639894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnTheMap/PinListTableViewController.swift"
-            timestampString = "472861166.684179"
+            timestampString = "472866405.639894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>

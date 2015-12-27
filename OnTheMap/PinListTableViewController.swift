@@ -12,12 +12,16 @@ class PinListTableViewController: BaseDataDisplayViewController, UITableViewData
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var loadingView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        loadingView.hidden = true
+        activityIndicatorView.stopAnimating()
     }
     
     @IBAction func logoutTouchUp(sender: AnyObject) {
@@ -54,15 +58,13 @@ class PinListTableViewController: BaseDataDisplayViewController, UITableViewData
     }
     
     override func showActivityIndicatorView() {
-        activityIndicatorView.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
-        activityIndicatorView.center = tableView.center
-        activityIndicatorView.hidesWhenStopped = true
+        loadingView.hidden = false
         activityIndicatorView.activityIndicatorViewStyle = .Gray
-        tableView.addSubview(activityIndicatorView)
         activityIndicatorView.startAnimating()
     }
     
     override func hideActivityIndicatorView() {
+        loadingView.hidden = true
         activityIndicatorView.stopAnimating()
     }
 }
