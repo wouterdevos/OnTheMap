@@ -44,7 +44,11 @@ extension OnTheMapClient {
     
     struct QueryKeys {
         
+        // MARK: Udacity
         static let Where = "where"
+        
+        // MARK: Parse
+        static let Order = "order"
     }
     
     struct JSONBodyKeys {

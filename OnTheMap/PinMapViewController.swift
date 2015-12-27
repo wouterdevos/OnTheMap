@@ -35,7 +35,7 @@ class PinMapViewController: BaseDataDisplayViewController, MKMapViewDelegate {
     }
     
     override func updateStudentLocations() {
-        let studentLocations = OnTheMapClient.sharedInstance().studentLocations
+        let studentLocations = DataModel.sharedInstance().studentLocations
         
         guard studentLocations.count > 0 else {
             return

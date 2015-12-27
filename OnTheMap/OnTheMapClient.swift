@@ -11,12 +11,6 @@ import MapKit
 
 class OnTheMapClient : NSObject {
     
-    var sessionID : String?
-    var key : String?
-    var firstName : String?
-    var lastName : String?
-    var studentLocations = [StudentLocation]()
-    
     // MARK: Udacity API calls
     
     // Create Session
@@ -72,8 +66,8 @@ class OnTheMapClient : NSObject {
             return
         }
         
-        self.sessionID = sessionID
-        self.key = key
+        DataModel.sharedInstance().sessionID = sessionID
+        DataModel.sharedInstance().key = key
         completionHandler(success: true, errorString: nil)
     }
     
@@ -127,7 +121,7 @@ class OnTheMapClient : NSObject {
         let headerFields = getParseHeaderFields()
         
         // Create url.
-        let urlString = OnTheMapClient.Constants.UdacityURL + OnTheMapClient.Methods.PublicUserData + key!
+        let urlString = OnTheMapClient.Constants.UdacityURL + OnTheMapClient.Methods.PublicUserData + DataModel.sharedInstance().key!
         
         let restClient = RESTClient.sharedInstance()
         restClient.taskForGETMethod(urlString, headerFields: headerFields, queryParameters: nil) { (data, error) in
@@ -156,8 +150,8 @@ class OnTheMapClient : NSObject {
                     return
                 }
                 
-                self.firstName = firstName
-                self.lastName = lastName
+                DataModel.sharedInstance().firstName = firstName
+                DataModel.sharedInstance().lastName = lastName
                 completionHandler(success: true, errorString: nil)
             }
         }
@@ -171,11 +165,16 @@ class OnTheMapClient : NSObject {
         // Specify header fields.
         let headerFields = getParseHeaderFields()
         
+        // Specify query parameters.
+        let queryParameters = [
+            OnTheMapClient.QueryKeys.Order: "-updateAt"
+        ]
+        
         // Create url.
         let urlString = OnTheMapClient.Constants.ParseURL + OnTheMapClient.Methods.StudentLocation
         
         let restClient = RESTClient.sharedInstance()
-        restClient.taskForGETMethod(urlString, headerFields: headerFields, queryParameters: nil) { (data, error) in
+        restClient.taskForGETMethod(urlString, headerFields: headerFields, queryParameters: queryParameters) { (data, error) in
             
             if let _ = error {
                 completionHandler(success: false, errorString: "Failed to retrieve student locations")
@@ -189,7 +188,7 @@ class OnTheMapClient : NSObject {
                     completionHandler(success: false, errorString: "Cannot find key 'results' in JSON")
                     return
                 }
-                self.studentLocations = StudentLocation.studentLocationsFromResults(results)
+                DataModel.sharedInstance().studentLocations = StudentLocation.studentLocationsFromResults(results)
                 completionHandler(success: true, errorString: nil)
             }
         }
@@ -203,7 +202,7 @@ class OnTheMapClient : NSObject {
         
         // Specify query parameters.
         let queryParameters = [
-            OnTheMapClient.QueryKeys.Where: "{\"\(OnTheMapClient.JSONBodyKeys.UniqueKey)\":\"\(OnTheMapClient.sharedInstance().key!)\"}"
+            OnTheMapClient.QueryKeys.Where: "{\"\(OnTheMapClient.JSONBodyKeys.UniqueKey)\":\"\(DataModel.sharedInstance().key!)\"}"
         ]
         
         // Create url.
@@ -237,9 +236,9 @@ class OnTheMapClient : NSObject {
         var headerFields = getParseHeaderFields()
         headerFields[OnTheMapClient.HeaderFields.ContentType] = "application/json"
         let bodyParameters: [String:AnyObject] = [
-            OnTheMapClient.JSONBodyKeys.UniqueKey: key!,
-            OnTheMapClient.JSONBodyKeys.FirstName: firstName!,
-            OnTheMapClient.JSONBodyKeys.LastName: lastName!,
+            OnTheMapClient.JSONBodyKeys.UniqueKey: DataModel.sharedInstance().key!,
+            OnTheMapClient.JSONBodyKeys.FirstName: DataModel.sharedInstance().firstName!,
+            OnTheMapClient.JSONBodyKeys.LastName: DataModel.sharedInstance().lastName!,
             OnTheMapClient.JSONBodyKeys.MapString: mapString,
             OnTheMapClient.JSONBodyKeys.MediaURL: mediaURL,
             OnTheMapClient.JSONBodyKeys.Latitude: location.coordinate.latitude,

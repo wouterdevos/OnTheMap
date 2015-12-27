@@ -35,6 +35,8 @@ class BaseDataDisplayViewController: UIViewController, StudentLocationViewContro
                 self.hideActivityIndicatorView()
                 if success {
                     self.updateStudentLocations()
+                } else {
+                    Utilities.createAlertController(self, message: errorString!)
                 }
             })
         }

@@ -131,7 +131,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="40" y="397" width="320" height="38"/>
+                                    <rect key="frame" x="40" y="359" width="320" height="38"/>
                                 </variation>
                                 <connections>
                                     <action selector="signUpButtonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k5r-pc-fWF"/>
@@ -355,14 +355,14 @@
                                 <exclude reference="pEl-u9-UTb"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="HTT-d9-Dne"/>
+                                <exclude reference="HZt-HK-hEJ"/>
                                 <exclude reference="Jkt-QE-qgR"/>
                                 <exclude reference="NC9-Uj-Rrq"/>
                                 <exclude reference="Tjn-73-KxZ"/>
                                 <exclude reference="6mH-XK-l2j"/>
                                 <exclude reference="T0V-4Z-cuJ"/>
                                 <exclude reference="cby-N5-2cE"/>
-                                <exclude reference="HTT-d9-Dne"/>
-                                <exclude reference="HZt-HK-hEJ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -371,14 +371,14 @@
                                 <include reference="pEl-u9-UTb"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="HTT-d9-Dne"/>
+                                <include reference="HZt-HK-hEJ"/>
                                 <include reference="Jkt-QE-qgR"/>
                                 <include reference="NC9-Uj-Rrq"/>
                                 <include reference="Tjn-73-KxZ"/>
                                 <include reference="6mH-XK-l2j"/>
                                 <include reference="T0V-4Z-cuJ"/>
                                 <include reference="cby-N5-2cE"/>
-                                <include reference="HTT-d9-Dne"/>
-                                <include reference="HZt-HK-hEJ"/>
                             </mask>
                         </variation>
                     </view>

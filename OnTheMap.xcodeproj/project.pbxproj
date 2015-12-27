@@ -18,6 +18,7 @@
 		100D00411C1C880C00047045 /* UILoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100D00401C1C880C00047045 /* UILoginTextField.swift */; };
 		106D26B11C24AA5A0005F60A /* OnTheMapConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D26B01C24AA5A0005F60A /* OnTheMapConstants.swift */; };
 		107E8BDD1C2ECB9600038B2E /* BaseDataDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E8BDC1C2ECB9500038B2E /* BaseDataDisplayViewController.swift */; };
+		10D5E64A1C3053D400C9BB95 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D5E6491C3053D400C9BB95 /* DataModel.swift */; };
 		10E695CC1C1E07F4009B00BD /* RESTClientConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E695CB1C1E07F4009B00BD /* RESTClientConstants.swift */; };
 		10EA099B1C2A017D00CF4B31 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10EA09981C2A017D00CF4B31 /* Roboto-Medium.ttf */; };
 		10EA099C1C2A017D00CF4B31 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10EA09991C2A017D00CF4B31 /* Roboto-Regular.ttf */; };
@@ -67,6 +68,7 @@
 		100D00401C1C880C00047045 /* UILoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILoginTextField.swift; sourceTree = "<group>"; };
 		106D26B01C24AA5A0005F60A /* OnTheMapConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapConstants.swift; sourceTree = "<group>"; };
 		107E8BDC1C2ECB9500038B2E /* BaseDataDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDataDisplayViewController.swift; sourceTree = "<group>"; };
+		10D5E6491C3053D400C9BB95 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		10E695CB1C1E07F4009B00BD /* RESTClientConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTClientConstants.swift; sourceTree = "<group>"; };
 		10EA09981C2A017D00CF4B31 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		10EA09991C2A017D00CF4B31 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -119,26 +121,27 @@
 		100D000A1C1C61E700047045 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
-				100D003C1C1C695B00047045 /* Fonts */,
-				100D000B1C1C61E700047045 /* AppDelegate.swift */,
-				100D000D1C1C61E700047045 /* LoginViewController.swift */,
-				100D000F1C1C61E700047045 /* Main.storyboard */,
-				100D00151C1C61E700047045 /* Assets.xcassets */,
-				10F36DB11C26C9CB005D3B3C /* PinMapViewController.swift */,
 				100D001A1C1C61E700047045 /* Info.plist */,
-				100D00171C1C61E700047045 /* LaunchScreen.storyboard */,
-				100D00121C1C61E700047045 /* OnTheMap.xcdatamodeld */,
-				100D00401C1C880C00047045 /* UILoginTextField.swift */,
-				10F4E7851C1D782200769DCB /* RESTClient.swift */,
-				10E695CB1C1E07F4009B00BD /* RESTClientConstants.swift */,
+				100D000B1C1C61E700047045 /* AppDelegate.swift */,
+				107E8BDC1C2ECB9500038B2E /* BaseDataDisplayViewController.swift */,
+				10F36DBD1C26FC25005D3B3C /* BaseViewController.swift */,
+				100D000D1C1C61E700047045 /* LoginViewController.swift */,
 				10F240241C22E54700B52D41 /* OnTheMapClient.swift */,
 				106D26B01C24AA5A0005F60A /* OnTheMapConstants.swift */,
 				10F36DB31C26CA61005D3B3C /* PinListTableViewController.swift */,
+				10F36DB11C26C9CB005D3B3C /* PinMapViewController.swift */,
+				10F4E7851C1D782200769DCB /* RESTClient.swift */,
+				10E695CB1C1E07F4009B00BD /* RESTClientConstants.swift */,
 				10F36DB51C26D6F0005D3B3C /* StudentLocation.swift */,
-				10F36DBB1C26F762005D3B3C /* Utilities.swift */,
-				10F36DBD1C26FC25005D3B3C /* BaseViewController.swift */,
+				10D5E6491C3053D400C9BB95 /* DataModel.swift */,
 				10EA2B9E1C29A20E00FB0AAF /* StudentLocationViewController.swift */,
-				107E8BDC1C2ECB9500038B2E /* BaseDataDisplayViewController.swift */,
+				100D00401C1C880C00047045 /* UILoginTextField.swift */,
+				10F36DBB1C26F762005D3B3C /* Utilities.swift */,
+				100D00151C1C61E700047045 /* Assets.xcassets */,
+				100D003C1C1C695B00047045 /* Fonts */,
+				100D00171C1C61E700047045 /* LaunchScreen.storyboard */,
+				100D000F1C1C61E700047045 /* Main.storyboard */,
+				100D00121C1C61E700047045 /* OnTheMap.xcdatamodeld */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				106D26B11C24AA5A0005F60A /* OnTheMapConstants.swift in Sources */,
 				10F36DB21C26C9CB005D3B3C /* PinMapViewController.swift in Sources */,
 				10F36DBC1C26F762005D3B3C /* Utilities.swift in Sources */,
+				10D5E64A1C3053D400C9BB95 /* DataModel.swift in Sources */,
 				100D000E1C1C61E700047045 /* LoginViewController.swift in Sources */,
 				10F240251C22E54700B52D41 /* OnTheMapClient.swift in Sources */,
 				10F4E7861C1D782200769DCB /* RESTClient.swift in Sources */,

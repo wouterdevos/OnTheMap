@@ -115,6 +115,11 @@ class StudentLocationViewController: BaseViewController, MKMapViewDelegate, UITe
         }
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return false
+    }
+    
     func toggleUserInterface(enabled: Bool) {
         linkTextField.enabled = enabled
         locationTextField.enabled = enabled

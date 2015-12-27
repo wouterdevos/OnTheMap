@@ -37,13 +37,13 @@ class PinListTableViewController: BaseDataDisplayViewController, UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return OnTheMapClient.sharedInstance().studentLocations.count
+        return DataModel.sharedInstance().studentLocations.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("StudentLocationTableViewCell", forIndexPath: indexPath)
-        let studentLocation = OnTheMapClient.sharedInstance().studentLocations[indexPath.row]
+        let studentLocation = DataModel.sharedInstance().studentLocations[indexPath.row]
         
         // Set the name
         cell.textLabel?.text = "\(studentLocation.firstName) \(studentLocation.lastName)"
@@ -53,7 +53,7 @@ class PinListTableViewController: BaseDataDisplayViewController, UITableViewData
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let studentLocation = OnTheMapClient.sharedInstance().studentLocations[indexPath.row]
+        let studentLocation = DataModel.sharedInstance().studentLocations[indexPath.row]
         let urlString = studentLocation.mediaURL
         openURL(urlString)
     }
